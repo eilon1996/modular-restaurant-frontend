@@ -1,0 +1,845 @@
+{
+    "comments": {
+        "0": {
+            "author": "John Lemon",
+            "comment": "Imagine all the eatables, living in conFusion!",
+            "date": "2012-10-16T17:57:28.556094Z",
+            "dishId": 0,
+            "id": 0,
+            "rating": 5
+        },
+        "1": {
+            "author": "Paul McVites",
+            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+            "date": "2014-09-05T17:57:28.556094Z",
+            "dishId": 0,
+            "id": 1,
+            "rating": 4
+        },
+        "2": {
+            "author": "Michael Jaikishan",
+            "comment": "Eat it, just eat it!",
+            "date": "2015-02-13T17:57:28.556094Z",
+            "dishId": 0,
+            "id": 2,
+            "rating": 3
+        },
+        "3": {
+            "author": "Ringo Starry",
+            "comment": "Ultimate, Reaching for the stars!",
+            "date": "2013-12-02T17:57:28.556094Z",
+            "dishId": 0,
+            "id": 3,
+            "rating": 4
+        },
+        "4": {
+            "author": "25 Cent",
+            "comment": "It's your birthday, we're gonna party!",
+            "date": "2011-12-02T17:57:28.556094Z",
+            "dishId": 0,
+            "id": 4,
+            "rating": 2
+        },
+        "5": {
+            "author": "John Lemon",
+            "comment": "Imagine all the eatables, living in conFusion!",
+            "date": "2012-10-16T17:57:28.556094Z",
+            "dishId": 1,
+            "id": 5,
+            "rating": 5
+        },
+        "6": {
+            "author": "Paul McVites",
+            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+            "date": "2014-09-05T17:57:28.556094Z",
+            "dishId": 1,
+            "id": 6,
+            "rating": 4
+        },
+        "7": {
+            "author": "Michael Jaikishan",
+            "comment": "Eat it, just eat it!",
+            "date": "2015-02-13T17:57:28.556094Z",
+            "dishId": 1,
+            "id": 7,
+            "rating": 3
+        },
+        "8": {
+            "author": "Ringo Starry",
+            "comment": "Ultimate, Reaching for the stars!",
+            "date": "2013-12-02T17:57:28.556094Z",
+            "dishId": 1,
+            "id": 8,
+            "rating": 4
+        },
+        "9": {
+            "author": "25 Cent",
+            "comment": "It's your birthday, we're gonna party!",
+            "date": "2011-12-02T17:57:28.556094Z",
+            "dishId": 1,
+            "id": 9,
+            "rating": 2
+        },
+        "10": {
+            "author": "John Lemon",
+            "comment": "Imagine all the eatables, living in conFusion!",
+            "date": "2012-10-16T17:57:28.556094Z",
+            "dishId": 2,
+            "id": 10,
+            "rating": 5
+        },
+        "11": {
+            "author": "Paul McVites",
+            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+            "date": "2014-09-05T17:57:28.556094Z",
+            "dishId": 2,
+            "id": 11,
+            "rating": 4
+        },
+        "12": {
+            "author": "Michael Jaikishan",
+            "comment": "Eat it, just eat it!",
+            "date": "2015-02-13T17:57:28.556094Z",
+            "dishId": 2,
+            "id": 12,
+            "rating": 3
+        },
+        "13": {
+            "author": "Ringo Starry",
+            "comment": "Ultimate, Reaching for the stars!",
+            "date": "2013-12-02T17:57:28.556094Z",
+            "dishId": 2,
+            "id": 13,
+            "rating": 4
+        },
+        "14": {
+            "author": "25 Cent",
+            "comment": "It's your birthday, we're gonna party!",
+            "date": "2011-12-02T17:57:28.556094Z",
+            "dishId": 2,
+            "id": 14,
+            "rating": 2
+        },
+        "15": {
+            "author": "John Lemon",
+            "comment": "Imagine all the eatables, living in conFusion!",
+            "date": "2012-10-16T17:57:28.556094Z",
+            "dishId": 3,
+            "id": 15,
+            "rating": 5
+        },
+        "16": {
+            "author": "Paul McVites",
+            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+            "date": "2014-09-05T17:57:28.556094Z",
+            "dishId": 3,
+            "id": 16,
+            "rating": 4
+        },
+        "17": {
+            "author": "Michael Jaikishan",
+            "comment": "Eat it, just eat it!",
+            "date": "2015-02-13T17:57:28.556094Z",
+            "dishId": 3,
+            "id": 17,
+            "rating": 3
+        },
+        "18": {
+            "author": "Ringo Starry",
+            "comment": "Ultimate, Reaching for the stars!",
+            "date": "2013-12-02T17:57:28.556094Z",
+            "dishId": 3,
+            "id": 18,
+            "rating": 4
+        },
+        "19": {
+            "author": "25 Cent",
+            "comment": "It's your birthday, we're gonna party!",
+            "date": "2011-12-02T17:57:28.556094Z",
+            "dishId": 3,
+            "id": 19,
+            "rating": 2
+        },
+        "20": {
+            "author": "eilon",
+            "comment": "test",
+            "date": "2020-08-29T14:25:46.815Z",
+            "dishId": 0,
+            "id": 20
+        },
+        "21": {
+            "author": "aaa",
+            "comment": "aaa",
+            "date": "2020-09-05T11:25:58.307Z",
+            "dishId": 1,
+            "id": 21
+        },
+        "30": {
+            "author": "eilon",
+            "comment": "comment",
+            "date": "2020-09-27T13:33:53.428Z",
+            "dishId": 2
+        },
+        "-MHuwSgkd1_0GfQKziA1": {
+            "author": "אוריה",
+            "comment": "טעים",
+            "date": "2020-09-23T12:30:45.383Z",
+            "dishId": 0
+        },
+        "-MIElGTNkQjhMM2EvoXm": {
+            "author": "eilon",
+            "comment": "comment",
+            "date": "2020-09-27T13:33:53.428Z",
+            "dishId": 2
+        },
+        "-MIEmj7FTmxsuiEbbHLD": {
+            "author": "eilon",
+            "comment": "comment2",
+            "date": "2020-09-27T13:40:17.201Z",
+            "dishId": 1
+        },
+        "-MIEn0b9KkkJ5FBA4d_i": {
+            "author": "eilon",
+            "comment": "comment2",
+            "date": "2020-09-27T13:41:33.338Z",
+            "dishId": 1
+        },
+        "-MIEnqpx6cVu3NS-YndM": {
+            "author": "eilon",
+            "comment": " onChange={this.handleInputChange}",
+            "date": "2020-09-27T13:45:10.995Z",
+            "dishId": 1
+        },
+        "-MIEo3kTf4AIsDIqMl_J": {
+            "author": "qqqq",
+            "comment": "qqqqq",
+            "date": "2020-09-27T13:46:08.309Z",
+            "dishId": 1
+        },
+        "-MIEpzF0nCncTxWfynF5": {
+            "author": "zzzz",
+            "comment": "zzzz",
+            "date": "2020-09-27T13:54:25.303Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MIEqZHlpasZoPKcJaWr": {
+            "author": "aaaa",
+            "comment": "aaaa",
+            "date": "2020-09-27T13:57:00.940Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MIEqp1CyuxtNuAjKfLP": {
+            "author": "aaaa",
+            "comment": "aaaaa",
+            "date": "2020-09-27T13:57:50.417Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MIErJfQIg8A6QV7BTa2": {
+            "author": "aaa",
+            "comment": "aaa",
+            "date": "2020-09-27T14:00:09.370Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MIErUp_PIku3C9Mwr_H": {
+            "author": "sadasd",
+            "comment": "asdasd",
+            "date": "2020-09-27T14:01:03.702Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MINYLdwlrwnhXwQCM2s": {
+            "author": "asas",
+            "comment": "asas",
+            "date": "2020-09-29T06:29:39.441Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MINYRFORevYHFL4kM44": {
+            "author": "aaaa",
+            "comment": "aaaaa",
+            "date": "2020-09-29T06:29:10.078Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MINYa30EcTPDjq-D0zF": {
+            "author": "qqqq",
+            "comment": "qqqq",
+            "date": "2020-09-29T06:30:43.129Z",
+            "dishId": 1,
+            "rating": 5
+        },
+        "-MINZuDdcZYRYQkTrS1M": {
+            "author": "eilon",
+            "comment": "comment",
+            "date": "2020-09-27T13:33:53.428Z",
+            "dishId": 2
+        },
+        "-MITjQONmH_Jo-_59uut": {
+            "author": "asdasdasd",
+            "comment": "asdasdas",
+            "date": "2020-09-30T11:20:09.167Z",
+            "dishId": 3
+        }
+    },
+    "content": [
+        {
+            "color": [
+                214,
+                74,
+                114
+            ],
+            "dishes": [
+                {
+                    "category": "mains",
+                    "comments": [
+                        {
+                            "author": "John Lemon",
+                            "comment": "Imagine all the eatables, living in conFusion!",
+                            "date": "2012-10-16T17:57:28.556094Z",
+                            "id": 0,
+                            "rating": 5
+                        },
+                        {
+                            "author": "Paul McVites",
+                            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+                            "date": "2014-09-05T17:57:28.556094Z",
+                            "id": 1,
+                            "rating": 4
+                        },
+                        {
+                            "author": "Michael Jaikishan",
+                            "comment": "Eat it, just eat it!",
+                            "date": "2015-02-13T17:57:28.556094Z",
+                            "id": 2,
+                            "rating": 3
+                        },
+                        {
+                            "author": "Ringo Starry",
+                            "comment": "Ultimate, Reaching for the stars!",
+                            "date": "2013-12-02T17:57:28.556094Z",
+                            "id": 3,
+                            "rating": 4
+                        },
+                        {
+                            "author": "25 Cent",
+                            "comment": "It's your birthday, we're gonna party!",
+                            "date": "2011-12-02T17:57:28.556094Z",
+                            "id": 4,
+                            "rating": 2
+                        }
+                    ],
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer. 000"
+                    },
+                    "id": 0,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/uthappizza.png",
+                    "label": "Hot 🌶,Vegan 🌱",
+                    "price": "4.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 24,
+                        "text": "Uthappizza00"
+                    }
+                },
+                {
+                    "category": "appetizer",
+                    "comments": [
+                        {
+                            "author": "John Lemon",
+                            "comment": "Imagine all the eatables, living in conFusion!",
+                            "date": "2012-10-16T17:57:28.556094Z",
+                            "id": 5,
+                            "rating": 5
+                        },
+                        {
+                            "author": "Paul McVites",
+                            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+                            "date": "2014-09-05T17:57:28.556094Z",
+                            "id": 6,
+                            "rating": 4
+                        },
+                        {
+                            "author": "Michael Jaikishan",
+                            "comment": "Eat it, just eat it!",
+                            "date": "2015-02-13T17:57:28.556094Z",
+                            "id": 7,
+                            "rating": 3
+                        },
+                        {
+                            "author": "Ringo Starry",
+                            "comment": "Ultimate, Reaching for the stars!",
+                            "date": "2013-12-02T17:57:28.556094Z",
+                            "id": 8,
+                            "rating": 4
+                        },
+                        {
+                            "author": "25 Cent",
+                            "comment": "It's your birthday, we're gonna party!",
+                            "date": "2011-12-02T17:57:28.556094Z",
+                            "id": 9,
+                            "rating": 2
+                        }
+                    ],
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce1"
+                    },
+                    "id": 1,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/zucchipakoda.png",
+                    "label": "Vegan 🌱",
+                    "price": "1.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "Zucchipakoda1"
+                    }
+                },
+                {
+                    "category": "appetizer",
+                    "comments": [
+                        {
+                            "author": "John Lemon",
+                            "comment": "Imagine all the eatables, living in conFusion!",
+                            "date": "2012-10-16T17:57:28.556094Z",
+                            "id": 10,
+                            "rating": 5
+                        },
+                        {
+                            "author": "Paul McVites",
+                            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+                            "date": "2014-09-05T17:57:28.556094Z",
+                            "id": 11,
+                            "rating": 4
+                        },
+                        {
+                            "author": "Michael Jaikishan",
+                            "comment": "Eat it, just eat it!",
+                            "date": "2015-02-13T17:57:28.556094Z",
+                            "id": 12,
+                            "rating": 3
+                        },
+                        {
+                            "author": "Ringo Starry",
+                            "comment": "Ultimate, Reaching for the stars!",
+                            "date": "2013-12-02T17:57:28.556094Z",
+                            "id": 13,
+                            "rating": 4
+                        },
+                        {
+                            "author": "25 Cent",
+                            "comment": "It's your birthday, we're gonna party!",
+                            "date": "2011-12-02T17:57:28.556094Z",
+                            "id": 14,
+                            "rating": 2
+                        }
+                    ],
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A quintessential ConFusion experience, is it a vada or is it a donut?0"
+                    },
+                    "id": 2,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/vadonut.png",
+                    "label": "",
+                    "price": "1.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 36,
+                        "text": "Vadonut0"
+                    }
+                },
+                {
+                    "category": "dessert",
+                    "comments": [
+                        {
+                            "author": "John Lemon",
+                            "comment": "Imagine all the eatables, living in conFusion!",
+                            "date": "2012-10-16T17:57:28.556094Z",
+                            "id": 15,
+                            "rating": 5
+                        },
+                        {
+                            "author": "Paul McVites",
+                            "comment": "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+                            "date": "2014-09-05T17:57:28.556094Z",
+                            "id": 16,
+                            "rating": 4
+                        },
+                        {
+                            "author": "Michael Jaikishan",
+                            "comment": "Eat it, just eat it!",
+                            "date": "2015-02-13T17:57:28.556094Z",
+                            "id": 17,
+                            "rating": 3
+                        },
+                        {
+                            "author": "Ringo Starry",
+                            "comment": "Ultimate, Reaching for the stars!",
+                            "date": "2013-12-02T17:57:28.556094Z",
+                            "id": 18,
+                            "rating": 4
+                        },
+                        {
+                            "author": "25 Cent",
+                            "comment": "It's your birthday, we're gonna party!",
+                            "date": "2011-12-02T17:57:28.556094Z",
+                            "id": 19,
+                            "rating": 2
+                        }
+                    ],
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms0"
+                    },
+                    "id": 3,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/elaicheesecake.png",
+                    "label": "Hot 🌶,Vegan 🌱",
+                    "price": "2.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "ElaiCheese Cake0"
+                    }
+                }
+            ],
+            "head": [
+                {
+                    "description": {
+                        "fontFamily": "sofia",
+                        "fontSize": 28,
+                        "text": "my description 00"
+                    },
+                    "title": {
+                        "fontFamily": "sacramento",
+                        "fontSize": 68,
+                        "text": "my title00"
+                    }
+                }
+            ],
+            "id": "0",
+            "password": "0",
+            "staff": [
+                {
+                    "abbr": "CEO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 12,
+                        "text": "Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother's wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket, was his first inspiration to create the fusion cuisines for which The Frying Pan became well known. He brings his zeal for fusion cuisines to this restaurant, pioneering cross-cultural culinary connections.."
+                    },
+                    "featured": false,
+                    "id": 0,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef1.jpeg",
+                    "label": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 30,
+                        "text": "Chief Epicurious Officer0"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "Peter Pan"
+                    }
+                },
+                {
+                    "abbr": "CFO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 10,
+                        "text": "Our CFO, Danny, as he is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. His experiences growing up on a farm in the Australian outback gave him great appreciation for varieties of food sources. As he puts it in his own words, Everything that runs, wins, and everything that stays, pays!"
+                    },
+                    "featured": false,
+                    "id": 1,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef2.jpeg",
+                    "label": {
+                        "fontFamily": "sacramento",
+                        "fontSize": 22,
+                        "text": "Chief Food Officer"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "Dhanasekaran Witherspoon"
+                    }
+                },
+                {
+                    "abbr": "CTO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "Blessed with the most discerning gustatory sense, Agumbe, our CFO, personally ensures that every dish that we serve meets his exacting tastes. Our chefs dread the tongue lashing that ensues if their dish does not meet his exacting standards. He lives by his motto, You click only if you survive my lick."
+                    },
+                    "featured": false,
+                    "id": 2,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef3.jpeg",
+                    "label": {
+                        "fontFamily": "secularOne",
+                        "fontSize": 18,
+                        "text": "Chief Taste Officer"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "Agumbe Tang"
+                    }
+                }
+            ],
+            "thePlace": [
+                {
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": "14px",
+                        "text": "A quality and relaxing rural country restaurant, run by award winning owners, in the beautiful Berkshire village of Peasemore just a short drive from the A34 and junctions 13 and 14 of the M4. The building and decor are charming and rustic, with elegant modern touches."
+                    },
+                    "id": 0,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/place/restaurant-place.jpg",
+                    "label": "New",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": "14px",
+                        "text": "pastoral place"
+                    }
+                }
+            ]
+        },
+        {
+            "color": [
+                89,
+                110,
+                199
+            ],
+            "dishes": [
+                {
+                    "category": "mains",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer. 000"
+                    },
+                    "id": 0,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/uthappizza.png",
+                    "label": "Hot 🌶,Vegan 🌱",
+                    "price": "4.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 24,
+                        "text": "Uthappizza00"
+                    }
+                },
+                {
+                    "category": "appetizer",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce1"
+                    },
+                    "id": 1,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/zucchipakoda.png",
+                    "label": "Vegan 🌱",
+                    "price": "1.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "Zucchipakoda1"
+                    }
+                },
+                {
+                    "category": "appetizer",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A quintessential ConFusion experience, is it a vada or is it a donut?0"
+                    },
+                    "id": 2,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/vadonut.png",
+                    "label": "",
+                    "price": "1.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 36,
+                        "text": "Vadonut0"
+                    }
+                },
+                {
+                    "category": "dessert",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms0"
+                    },
+                    "id": 3,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/elaicheesecake.png",
+                    "label": "Hot 🌶,Vegan 🌱",
+                    "price": "2.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "ElaiCheese Cake0"
+                    }
+                },
+                {
+                    "category": "dessert",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 15,
+                        "text": "xxx"
+                    },
+                    "id": 4,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/elaicheesecake.png",
+                    "label": "Hot 🌶,Vegan 🌱",
+                    "price": "2.99",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 20,
+                        "text": "x"
+                    }
+                }
+            ],
+            "head": [
+                {
+                    "description": {
+                        "fontFamily": "sofia",
+                        "fontSize": 26,
+                        "text": "my description 1"
+                    },
+                    "title": {
+                        "fontFamily": "sacramento",
+                        "fontSize": 72,
+                        "text": "my title11"
+                    }
+                }
+            ],
+            "id": "1",
+            "password": "1",
+            "staff": [
+                {
+                    "abbr": "CFO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 10,
+                        "text": "Our CFO, Danny, as he is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. His experiences growing up on a farm in the Australian outback gave him great appreciation for varieties of food sources. As he puts it in his own words, Everything that runs, wins, and everything that stays, pays!"
+                    },
+                    "featured": false,
+                    "id": 0,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef2.jpeg",
+                    "label": {
+                        "fontFamily": "sofia",
+                        "fontSize": 36,
+                        "text": "Chief Food Officer"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "Dhanasekaran Witherspoon"
+                    }
+                },
+                {
+                    "abbr": "CTO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "c"
+                    },
+                    "featured": false,
+                    "id": 1,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef3.jpeg",
+                    "label": {
+                        "fontFamily": "secularOne",
+                        "fontSize": 24,
+                        "text": "a"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "b"
+                    }
+                },
+                {
+                    "abbr": "CTO",
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "a"
+                    },
+                    "featured": false,
+                    "id": 2,
+                    "image": "https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/chefs/chef3.jpeg",
+                    "label": {
+                        "fontFamily": "secularOne",
+                        "fontSize": 24,
+                        "text": "x"
+                    },
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": 14,
+                        "text": "a"
+                    }
+                }
+            ],
+            "thePlace": [
+                {
+                    "description": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": "14px",
+                        "text": "A quality and relaxing rural country restaurant, run by award winning owners, in the beautiful Berkshire village of Peasemore just a short drive from the A34 and junctions 13 and 14 of the M4. The building and decor are charming and rustic, with elegant modern touches."
+                    },
+                    "id": 0,
+                    "image": " https://modular-restrunt-images.s3.us-east-2.amazonaws.com/default/place/restaurant-place.jpg",
+                    "label": "New",
+                    "title": {
+                        "fontFamily": "Courier Prime",
+                        "fontSize": "14px",
+                        "text": "pastoral place"
+                    }
+                }
+            ]
+        }
+    ],
+    "feedback": [
+        {
+            "agree": true,
+            "contactType": "Email",
+            "date": "2017-12-04T09:41:49.890Z",
+            "email": "dafdads@daffas.dfdafd",
+            "firstname": "fdas",
+            "id": 1,
+            "lastname": "afds",
+            "message": "afadsfds",
+            "telnum": "134113"
+        },
+        {
+            "agree": false,
+            "contactType": "Tel.",
+            "date": "2020-08-30T20:19:47.322Z",
+            "email": "aaa@aaa.aaa",
+            "id": 2,
+            "message": "aaa"
+        },
+        {
+            "agree": false,
+            "contactType": "Email",
+            "date": "2020-08-30T20:24:29.032Z",
+            "email": "bbb@bbb.bbb",
+            "id": 3,
+            "message": "bbbbbbb"
+        },
+        {
+            "agree": false,
+            "contactType": "Tel.",
+            "date": "2020-08-30T21:09:47.573Z",
+            "email": "cc@ccc.cc",
+            "firstname": "ccc",
+            "id": 4,
+            "lastname": "ccc",
+            "message": "ss",
+            "telnum": "3333"
+        }
+    ]
+}

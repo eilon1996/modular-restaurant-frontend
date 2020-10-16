@@ -1,0 +1,33 @@
+/*****HEADER*****/
+
+.menu-card{
+  padding: 15px;
+  border-width: 0px;
+}
+
+.menu-overlay{
+  padding: 30px;
+}
+.menu-delete-button{
+  margin-left: auto;
+  position: absolute;
+  right: 20px;
+}
+
+.addDish-form *{
+  width: 100%;
+}
+
+.addDish-form button{
+  width: 40%;
+  margin: 0% 5%;
+}
+
+@media screen and (max-width: 768px){
+
+  .addDish-form button{
+    justify-self: center;
+    width: 100%;
+    margin: 10px 0px;
+  }
+} 

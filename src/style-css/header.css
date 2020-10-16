@@ -1,0 +1,79 @@
+/*****HEADER*****/
+
+.jumbotron {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "h1-title h1-title"
+      "head-title colorPicker"
+      "head-description colorPicker";
+
+    padding: 50px 300px;
+    color:white;
+  }
+  
+  .head-title{
+      grid-area: head-title;
+  }
+  .head-description{
+      grid-area: head-description;
+  }
+  
+  .h1-title{
+    grid-area: h1-title;
+  }
+
+  .colorPicker{
+    grid-area: colorPicker;
+    justify-self: end;
+  }
+
+  .navbar{
+      margin: 0;
+      padding: 3px 300px;
+      display: flex;
+  }
+
+  .container-nav{
+    margin: 0;
+}
+
+  .login{
+      margin-left: auto;
+  }
+
+
+@media screen and (max-width: 768px){
+
+    .jumbotron {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+          "h1-title"
+          "head-title"
+          "head-description" 
+          "colorPicker";
+    
+          row-gap: 20px;
+        padding: 50px 50px;
+      }
+
+      .jumbotron *{
+          justify-self: center;
+      }
+      
+
+      .navbar{
+        margin: 0;
+        padding: 3px 3px 10px;
+        display: flex;
+    }
+    .container-nav{
+        margin: 0;
+    }
+    .navbar-brand{
+      margin-left: 10px;
+    }
+} 

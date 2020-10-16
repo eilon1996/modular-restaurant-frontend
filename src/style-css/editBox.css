@@ -1,0 +1,91 @@
+/*****HEADER*****/
+
+.edit-save {
+  height: 22px;
+  width: 50px;
+  font-size: 14px;
+  padding: 0px;
+}
+.edit-save-arrow {
+  height: 22px;
+  width: 22px;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.color-button {
+  border: 0px;
+  height: 30px;
+  width: 30px;
+  border-radius: 6px;
+  margin: 2px;
+}
+
+.editBox{
+  grid-area: form;
+  display: grid;
+  grid-template-rows: auto 25px ;
+  row-gap: 10px;
+  grid-template-areas: 
+  "text"
+  "buttons";
+}
+
+span, input, textarea{
+  grid-area: text;
+}
+
+div.lower{
+  grid-area: buttons;
+}
+
+
+
+@media screen and (min-width: 768px){
+
+
+}
+
+@media screen and (max-width: 768px){
+
+
+}
+
+
+
+/* select font style */
+
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+.sofia {
+  font-family: "Sofia";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+.indieFlower {
+  font-family: "Indie Flower";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Courgette");
+.courgette {
+  font-family: "Courgette";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Courier+Prime");
+.courierPrime {
+  font-family: "Courier Prime";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Secular+One");
+.secularOne {
+  font-family: "Secular One";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter");
+.architectsDaughter {
+  font-family: "Architects Daughter";
+}
+
+@import url("https://fonts.googleapis.com/css?family=Sacramento");
+.sacramento {
+  font-family: "Sacramento";
+}

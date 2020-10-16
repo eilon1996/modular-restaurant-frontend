@@ -1,0 +1,123 @@
+.DropzoneContainer{
+    margin: 0px 0px 10px;
+    
+}
+
+#containershowImg{
+    width: 100%;
+    height: 100%;
+    background-size:100% 100%;
+}
+/*.dzu-previewContainer target the imported dropzone inner class name, in there we target the img */
+.DropzoneContainer .dzu-previewContainer{
+        position: absolute;
+        top:0;
+        border-width: 0px;
+}
+#containershowImg .dzu-previewContainer img{
+    opacity: 0;
+}
+
+#wrapperp0{
+    background-color: white;
+}
+ #wrapperp1, #wrapperp2{
+    margin: 10px auto;
+    padding: 0;
+    width: 90%;
+    height: 20px;
+    background-color: rgba(211, 211, 211, 0.541);
+    opacity: 1;
+}
+
+#wrappershowImg{
+    width: 0px;
+    height: 0px;
+    /* opacity: 0; */
+    background-color: white;
+    animation-name: wrappershowImg;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+}
+@keyframes wrappershowimg{
+    0%{opacity: 1; width: 90%; height: 25px;}
+    100%{opacity: 0; width: 0px; height: 0px;}
+}
+
+.progress{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    left: 0;
+}
+
+#p0{
+
+    width: 0%;
+    background-color: lightgray;
+    animation-name: p0;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+#p1{
+
+    width: 50%;
+    background-color: rgb(192, 3, 3);
+    animation-name: p1;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes p1{
+    0%{background-color: lightgray; width: 0%;}
+    100%{background-color: rgb(192, 3, 3); width: 50%;}
+}
+
+#p2{
+
+    width: 100%;
+    background-color: green;
+    animation-name: p2;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes p2{
+    0%{background-color: rgb(192, 3, 3); width: 50%;}
+    100%{background-color: green; width: 100%;}
+}
+
+#showImg{
+    width: 0%;
+    background-color: green;
+    animation-name: showImg;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+}
+@keyframes showImg{
+    0%{opacity: 1; width: 100%;}
+    100%{opacity: 0; width: 0%;}
+}
+
+#DropzoneshowImg{
+    animation-name: DropzoneshowImg;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes DropzoneshowImg{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+.dzu-dropzone{
+    max-width: 100vh;
+    max-height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.dzu-dropzone::before {
+    content: "";
+    display: block;
+    margin-top: 100%;
+  }
