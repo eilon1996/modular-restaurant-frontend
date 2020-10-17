@@ -11,9 +11,14 @@
 .menu-delete-button{
   margin-left: auto;
   position: absolute;
+  top: 20px;
   right: 20px;
 }
 
+.menu-delete-button:hover{
+  background-color:white;
+  opacity: 0.5;
+}
 .addDish-form *{
   width: 100%;
 }

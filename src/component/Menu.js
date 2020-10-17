@@ -119,17 +119,29 @@ const Menu = (props) => {
                 :
                 <div className="row">
                     {myContent.dishes.map((dish) => (
-                        <Card className="col-6 col-md-4 menu-card" key={dish.id}>
-                            <Link to={`/menu/${dish.id}`}>
-                                <CardImg width="100%" src={dish.image} alt={dish.title.text} />
-                            </Link>
-                            <CardImgOverlay className="menu-overlay">
-                                <Link href={`/menu/${dish.id}`}> <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span></Link>
-                            </CardImgOverlay>
-                            <CardImgOverlay  className="menu-overlay-button">
+                        true ?
+                            <div className="col-6 col-md-4 menu-card">
+                                <Link to={`/menu/${dish.id}`} key={dish.id}>
+                                    <CardImg width="100%" src={dish.image} alt={dish.title.text} />
+                                    <CardImgOverlay>
+                                    <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
+                                    </CardImgOverlay>
+                                </Link>     
                                 <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                            </CardImgOverlay>
-                        </Card>
+                               
+                            </div>
+                            :
+                            <Card className="col-6 col-md-4 menu-card" key={dish.id}>
+                                <Link to={`/menu/${dish.id}`}>
+                                    <CardImg width="100%" src={dish.image} alt={dish.title.text} />
+                                </Link>
+                                <CardImgOverlay className="menu-overlay">
+                                    <Link href={`/menu/${dish.id}`}> <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span></Link>
+                                </CardImgOverlay>
+                                <CardImgOverlay className="menu-overlay-button">
+                                    <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                                </CardImgOverlay>
+                            </Card>
                     ))}
                     <AddDish />
                 </div>

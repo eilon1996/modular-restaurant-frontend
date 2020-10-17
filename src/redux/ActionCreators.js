@@ -2,14 +2,14 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/externalUrl';
 import cookie from 'react-cookies';
-
+import axios from 'axios';
 
 ////////////  signup  ////////////
 
 export const signup = (jsonObject) => (dispatch) => {
 
-  //return fetch("https://warm-fjord-92793.herokuapp.com/signup", {
-  return fetch("http://localhost:5001/signup", {
+  return fetch("https://warm-fjord-92793.herokuapp.com/signup", {
+  //return fetch("http://localhost:5001/signup", {
     method: "POST",
     body: JSON.stringify(jsonObject),
     headers: {
@@ -45,8 +45,8 @@ export const signup = (jsonObject) => (dispatch) => {
 export const login = (details) => (dispatch) => {
   // details is an object {username, password}
 
-  //return fetch("https://warm-fjord-92793.herokuapp.com/login", {
-  return fetch("http://localhost:5001/login", {
+  return fetch("https://warm-fjord-92793.herokuapp.com/login", {
+  //return fetch("http://localhost:5001/login", {
     method: "POST",
     body: JSON.stringify(details),
     headers: {
@@ -72,6 +72,37 @@ export const login = (details) => (dispatch) => {
       return error;
     });
 };
+
+export const loginToken = () => (dispatch) => {
+   // try to login with cookies, will return user 0 if no cookies mached
+
+   const token = cookie.load('auth');
+   return fetch("https://warm-fjord-92793.herokuapp.com/login-token", {
+   //return fetch("http://localhost:5001/login-token", {
+    method: "POST",
+    body: JSON.stringify({token}),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin"
+  })
+    .then(response => {
+      console.log("response", response);
+      return response.json()
+    })
+    .then(response => {
+      if (response.err) {
+        throw response.err;
+      }
+      console.log("response", response); //user details
+      return response.user;
+    })
+    .then(myContent => dispatch(addMyContent(myContent)))
+    .catch(error => {
+      console.log('login error: ', error);
+      return error;
+    });
+}
 
 
 

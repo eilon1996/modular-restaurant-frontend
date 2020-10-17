@@ -1,0 +1,90 @@
+/*////////the form///////*/
+
+.footer-social-form{
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: repeat(8,30px);
+  grid-template-areas:
+    "title title"
+    "facebook-label facebook-input"
+    "instagram-label instagram-input"
+    "twitter-label twitter-input"
+    "youtube-label youtube-input"
+    "email-label email-input"
+    "note note"
+    ". buttons";
+  row-gap: 10px;
+}
+
+.footer-social-note{
+  grid-area: note;
+  align-self:center;
+}
+
+.footer-social-buttons{
+  grid-area:buttons;
+  justify-self:end;
+}
+
+.footer-social-buttons *{
+
+  align-self:start;
+  margin:0px 4px;
+  padding: revert;
+}
+
+.footer-social-title{
+  grid-area: title;
+}
+
+.footer-btn-facebook{
+  grid-area: facebook-label;
+}
+.footer-btn-instagram{
+  grid-area: instagram-label;
+}
+.footer-btn-twitter{
+  grid-area: twitter-label;
+}
+.footer-btn-youtube{
+  grid-area: youtube-label; 
+}
+.footer-btn-email{
+  grid-area: email-label;
+}
+
+
+
+.facebook-input{
+
+  grid-area: facebook-input;
+}
+.instagram-input{
+  grid-area: instagram-input;
+}
+.twitter-input{
+  grid-area: twitter-input;
+}
+.youtube-input{
+  grid-area: youtube-input;
+}
+.email-input{
+  grid-area: email-input;
+}
+
+
+/*social*/
+
+.social-links-div{
+
+  text-align:center ;
+}
+.social-links{
+  text-align:center ;
+}
+
+.edit-social-btn{
+  padding: 3px 8px;
+  margin-top: 10px;
+  font-size: 14px;
+}

@@ -7,6 +7,8 @@ import EditBox from './EditBox';
 import { useSelector, useDispatch } from 'react-redux';
 import { putContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
+import '../style-css/about.css';
+
 
 
 
@@ -51,6 +53,7 @@ function About(props) {
             newEmployee.label.text = label;
             newEmployee.description.text = description;
             newEmployee.id = amount;
+            newEmployee.image = imgUrl;
             myContent.staff[amount] = newEmployee;
             setShowForm(false);
             dispatch(putContent(myContent));
@@ -62,30 +65,29 @@ function About(props) {
         }
 
         return (
-            <div className="col-12 mt-5" >
+            <React.Fragment>
                 <button className="btn btn-primary" style={{ display: showForm ? "none" : "block" }} onClick={() => setShowForm(!showForm)}>add employee</button>
 
                 <Collapse isOpen={showForm} navbar>
-                    <form onSubmit={(event) => handleSubmit(event)}>
-                        <Media tag='li'>
-                            <Media left middle id="addStaff-uploader">
-                                <UploadS3 type={"staff"} itemId={Object.keys(myContent.dishes).length} contentId={myContent.id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
-                            </Media>
-                            <Media body className="ml-5">
-                                <Media heading>
-                                    <input value={label} onChange={(event) => setLabel(event.target.value)} name="label" placeholder="staff member job" />
-                                </Media>
-                                <input className="col-12" value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="staff member name" />
-                                <textarea className="col-12" value={description} onChange={(event) => setDescription(event.target.value)} name="description" placeholder="staff member description" />
-                            </Media>
-                        </Media>
-                        <div style={{marginLeft:"auto"}}>
+                    <form className="staff-card add-staff" onSubmit={(event) => handleSubmit(event)}>
+                        <div className="staff-image" >
+                            <UploadS3 type={"staff"} itemId={Object.keys(myContent.dishes).length} contentId={myContent.id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                        </div>
+                        <div className="staff-header">
+                            <input className="staff-label" value={label} onChange={(event) => setLabel(event.target.value)} name="label" placeholder="staff member job" />
+                        </div>
+                        <input className="staff-title" value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="staff member name" />
+                        <textarea className="staff-description" value={description} onChange={(event) => setDescription(event.target.value)} name="description" placeholder="staff member description" />
+
+                        <div className="buttons">
                             <button className="btn btn-light" type="button" onClick={() => setShowForm(!showForm)}>cancel</button>
                             <button className="btn btn-primary" type="submit">add</button>
                         </div>
                     </form>
                 </Collapse>
-            </div>
+
+
+            </React.Fragment>
         )
     }
 

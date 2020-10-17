@@ -1,5 +1,25 @@
 /*****HEADER*****/
 
+.editBox{
+  display: grid;
+  grid-template-rows: auto 25px ;
+  grid-template-areas: 
+  "text"
+  "buttons";
+}
+
+span, input, textarea{
+  grid-area: text;
+}
+
+div.lower{
+  grid-area: buttons;
+}
+
+.editBox select{
+  margin-right: 3px;
+}
+
 .edit-save {
   height: 22px;
   width: 50px;
@@ -20,25 +40,6 @@
   border-radius: 6px;
   margin: 2px;
 }
-
-.editBox{
-  grid-area: form;
-  display: grid;
-  grid-template-rows: auto 25px ;
-  row-gap: 10px;
-  grid-template-areas: 
-  "text"
-  "buttons";
-}
-
-span, input, textarea{
-  grid-area: text;
-}
-
-div.lower{
-  grid-area: buttons;
-}
-
 
 
 @media screen and (min-width: 768px){

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
-import '../uploadS3.css';
+import '../style-css/uploadS3.css';
 
 
 
@@ -30,9 +30,8 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
         if (status === "done") {
             setprogress("p2");
             var data = new FormData();
-            //var ending = file.name.split('.');
-            //const imgName = "users/"+props.type+"/"+props.myId+"-"+props.itemId+"."+ending[ending.length-1];
-            const imgName = "users-dishes-test1.png";
+            const imgName = "users-"+type+"-"+contentId+":"+itemId+"."+file.name;
+            //const imgName = "users-dishes-test1.png";
 
             console.log("imgName, file", imgName, file)
             data.append('image', file, imgName);
@@ -43,8 +42,8 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 "Access-Control-Allow-Credentials": true,
                 dirName: 'users/dishes', /* optional, not working */
                 crossorigin: true,
-                url: "http://localhost:5001/upload",
-                //url: "https://warm-fjord-92793.herokuapp.com/upload",
+                //url: "http://localhost:5001/upload",
+                url: "https://warm-fjord-92793.herokuapp.com/upload",
                 // add to the end of the url the file name end take it from the backend
                 //url: process.env.BACKEND_PORT+"/upload",
                 data: data

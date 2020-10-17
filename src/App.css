@@ -37,7 +37,7 @@ address {
 }
 
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 /*//////// home page ///////*/
@@ -46,96 +46,8 @@ h1 {
   margin: 10px 0px 10px;
 }
 
-#addStaff-uploader {
-  width: 260px;
-  height: 260px;
-}
-
-.staff-card {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 1fr 1fr 2fr;
-  grid-template-areas:
-    "image header"
-    "image title"
-    "image description";
-}
-
-.staff-image {
-  grid-area: image;
-  align-self: start;
-  margin-top: 23px;
-}
-
-.staff-header {
-  grid-area: header;
-  display: grid;
-  grid-template-columns: auto 20px;
-  grid-template-areas: "label x";
-  margin: 0px;
-  padding: 0px;
-}
-
-.staff-label {
-  grid-area: label;
-}
-.staff-x {
-  grid-area: x;
-  align-self: start;
-}
-
-.staff-title {
-  grid-area: title;
-}
-
-.staff-description {
-  grid-area: description;
-}
 
 @media screen and (max-width: 768px) {
-  .staff-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "image header"
-      "image title"
-      "description description";
-  }
-
-  .staff-image {
-    display: grid;
-    grid-area: image;
-  }
-
-  .staff-header {
-    grid-area: header;
-    display: grid;
-    grid-template-columns: auto 20px;
-    grid-template-areas: "label x";
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .staff-label {
-    grid-area: label;
-  }
-  .staff-x {
-    grid-area: x;
-    align-self: start;
-  }
-
-  .staff-title {
-    grid-area: title;
-  }
-
-  .staff-description {
-    grid-area: description;
-    margin: 0px;
-    padding: 0px;
-  }
-
 
   /*home page*/
   .delete-on-phone {

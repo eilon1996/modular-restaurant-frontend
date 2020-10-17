@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { putContent } from '../redux/ActionCreators';
 import { useSelector, useDispatch } from 'react-redux';
+import '../style-css/footer.css';
 
 function Footer(props) {
 
@@ -11,54 +12,60 @@ function Footer(props) {
 
 
     const Links = () => {
-        const [edit, setEdit] = useState("");
+        const [edit, setEdit] = useState(false);
         const [facebook, setFacebook] = useState(myContent.footer.facebook);
         const [instagram, setInstagram] = useState(myContent.footer.instagram);
         const [twitter, setTwitter] = useState(myContent.footer.twitter);
         const [youtube, setYoutube] = useState(myContent.footer.youtube);
         const [email, setEmail] = useState(myContent.footer.email);
 
-        function handleSubmit(event){
+        function handleSubmit(event) {
             event.preventDefault();
             myContent.footer.facebook = facebook;
             myContent.footer.instagram = instagram;
             myContent.footer.twitter = twitter;
             myContent.footer.youtube = youtube;
             myContent.footer.email = email;
+            setEdit(false);
             dispatch(putContent(myContent));
+
         }
 
         return (
-            <div>
-                <div className="col-12 col-sm-4 align-self-center">
-                    <div className="text-center" id={edit}>
-                        <a className="btn btn-social-icon btn-facebook" href={facebook}><i className="fa fa-facebook"></i></a>
-                        <a className="btn btn-social-icon btn-instagram" href={instagram}><i className="fa fa-instagram"></i></a>
-                        <a className="btn btn-social-icon btn-twitter" href={twitter}><i className="fa fa-twitter"></i></a>
-                        <a className="btn btn-social-icon btn-google" href={youtube}><i className="fa fa-youtube"></i></a>
-                        <a className="btn btn-social-icon" href={"mailto:"+email}><i className="fa fa-envelope-o"></i></a>
-                    </div>
-                    <button className="btn" onClick={() => setEdit("edit")}>edit</button>
-                </div>
-                <div className="col-12 col-sm-4 align-self-center">
-                    <form className="footer-form" id={edit} onSubmit={(event) => handleSubmit(event)}>
-                        <span>add here external links to your restaurant</span>
-                        <label className="btn btn-social-icon btn-facebook"><i className="fa fa-facebook"></i>
-                            <input name="facebook" placeholder="facebook link" value={facebook} onChange={(event) => setFacebook(event.target.value)} /></label>
-                        <label className="btn btn-social-icon btn-instagram"><i className="fa fa-instagram"></i>
-                            <input name="instagram" placeholder="instagram link" value={instagram} onChange={(event) => setInstagram(event.target.value)}  /></label>
-                        <label className="btn btn-social-icon btn-twitter" ><i className="fa fa-twitter"></i>
-                            <input name="twitter" placeholder="twitter link" value={twitter} onChange={(event) => setTwitter(event.target.value)}  /></label>
-                        <label className="btn btn-social-icon btn-google" ><i className="fa fa-youtube"></i>
-                            <input name="youtube" placeholder="youtube link" value={youtube} onChange={(event) => setYoutube(event.target.value)}  /></label>
-                        <label className="btn btn-social-icon"><i className="fa fa-envelope-o"></i>
-                            <input name="email" placeholder="email adress" value={email} onChange={(event) => setEmail(event.target.value)}  /></label>
-                            <small>* you don't need to fill all fields</small>
-                    <button type="button" className="btn btn-light" onClick={() => setEdit("save")}>cancel</button>
-                    <button type="submit" className="btn btn-light" >submit</button>
+                edit ?
+                    <form className="footer-social-form" id={edit} onSubmit={(event) => handleSubmit(event)}>
+                        <span className="footer-social-title">add here external links to your restaurant</span>
+                        <label className="footer-btn-facebook btn btn-social-icon btn-facebook"><i className="fa fa-facebook" /></label>
+                        <input className="facebook-input" name="facebook" placeholder="facebook link" value={facebook} onChange={(event) => setFacebook(event.target.value)} />
+                        <label className="footer-btn-instagram btn btn-social-icon btn-instagram"><i className="fa fa-instagram" /></label>
+                        <input className="instagram-input" name="instagram" placeholder="instagram link" value={instagram} onChange={(event) => setInstagram(event.target.value)} />
+                        <label className="footer-btn-twitter btn btn-social-icon btn-twitter" ><i className="fa fa-twitter" /></label>
+                        <input className="twitter-input" name="twitter" placeholder="twitter link" value={twitter} onChange={(event) => setTwitter(event.target.value)} />
+                        <label className="footer-btn-youtube btn btn-social-icon btn-google" ><i className="fa fa-youtube" /></label>
+                        <input className="youtube-input" name="youtube" placeholder="youtube link" value={youtube} onChange={(event) => setYoutube(event.target.value)} />
+                        <label className="footer-btn-email btn btn-social-icon btn-email"><i className="fa fa-envelope-o" /></label>
+                        <input className="email-input" name="email" placeholder="email adress" value={email} onChange={(event) => setEmail(event.target.value)} />
+                        <small className="footer-social-note">* you don't need to fill all fields</small>
+                        <div className="footer-social-buttons">
+                            <button type="button" className="btn btn-light" onClick={() => setEdit(false)}>cancel</button>
+                            <button type="submit" className="btn btn-primary" >submit</button>
+                        </div>
                     </form>
-                </div>
-            </div>)
+
+                    :
+
+                    <div className="col-12 col-sm-4 social-links-div">
+                        <h2>our social</h2>
+                        <div className="social-links" id={edit}>
+                            <a style={{display:facebook && facebook.length>0?"":"none" }} className="btn btn-social-icon btn-facebook" href={facebook}><i className="fa fa-facebook"></i></a>
+                            <a style={{display:instagram && instagram.length>0?"":"none" }} className="btn btn-social-icon btn-instagram" href={instagram}><i className="fa fa-instagram"></i></a>
+                            <a style={{display:twitter && twitter.length>0?"":"none" }}  className="btn btn-social-icon btn-twitter" href={twitter}><i className="fa fa-twitter"></i></a>
+                            <a style={{display:youtube && youtube.length>0?"":"none" }}  className="btn btn-social-icon btn-google" href={youtube}><i className="fa fa-youtube"></i></a>
+                            <a style={{display:email && email.length>0?"":"none" }}  className="btn btn-social-icon btn-light" href={"mailto:" + email}><i className="fa fa-envelope-o"></i></a>
+                        </div>
+                        <button className="edit-social-btn btn btn-secondary" onClick={() => setEdit("edit")}>edit</button>
+                    </div>
+                )
     }
 
 
@@ -70,7 +77,7 @@ function Footer(props) {
             <div className="footer" style={{ backgroundColor: "rgba(" + [...myContent.color.map(c => c / 2), 0.5] + ")" }}>
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-4 offset-1 col-sm-2">
+                        <div className="col-6 col-sm-4 social-links-div" >
                             <h5>Links</h5>
                             <ul className="list-unstyled">
                                 <li><Link to="/home">Home</Link></li>
@@ -79,7 +86,7 @@ function Footer(props) {
                                 {/* <li><Link to="/contactus">Contact Us</Link></li> */}
                             </ul>
                         </div>
-                        <div className="col-7 col-sm-5">
+                        <div className="col-6 col-sm-4 social-links-div">
                             <h5>Our Address</h5>
                             <address>
                                 121, Clear Water Bay Road<br />
@@ -91,11 +98,13 @@ function Footer(props) {
                                     confusion@food.net</a>
                             </address>
                         </div>
-                         <Links/>
+                        <Links />
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-auto">
-                            <p>© Copyright 2018 Ristorante Con Fusion</p>
+
+                            <br/><br/>
+                            <small>© Copyright 2018 Ristorante Con Fusion</small>
                         </div>
                     </div>
                 </div>

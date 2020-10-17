@@ -67,7 +67,7 @@ const Header = (props) => {
 
         const details = { id: loginUsername, password: loginPassword }
         dispatch(login(details)).then(res => {
-            if (typeof res.user === String) {
+            if (typeof res === "string") {
                 console.log(res);
                 setLoginError(res);
             }

@@ -81,7 +81,7 @@ const EditBox = ({ type, id, field }) => {
                         <option value="architectsDaughter" className="architectsDaughter">Architects Daughter</option>
                         <option value="sacramento" className="sacramento">Sacramento</option>
                     </select>
-                    <button className="btn btn-secondary" type="submit" >save</button>
+                    <button className="edit-save btn btn-secondary" type="submit" >save</button>
                     </div>
                 </form>
                 :
