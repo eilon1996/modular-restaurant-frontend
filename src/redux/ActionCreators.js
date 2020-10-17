@@ -8,8 +8,8 @@ import axios from 'axios';
 
 export const signup = (jsonObject) => (dispatch) => {
 
-  return fetch("https://warm-fjord-92793.herokuapp.com/signup", {
-  //return fetch("http://localhost:5001/signup", {
+  return fetch(process.env.BACKEND_PORT + "/signup", {
+    //return fetch("http://localhost:5001/signup", {
     method: "POST",
     body: JSON.stringify(jsonObject),
     headers: {
@@ -29,7 +29,7 @@ export const signup = (jsonObject) => (dispatch) => {
       jsonObject["token"] = response.token;
       // cookie is not being saved. will work with a short string
       console.log(response.token);
-      cookie.save('auth',response["token"], { path: '/', maxAge: 3600 * 24 * 30 });
+      cookie.save('auth', response["token"], { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(addMyContent(jsonObject));
       alert("you signed up succefuly");
       return "";
@@ -45,8 +45,8 @@ export const signup = (jsonObject) => (dispatch) => {
 export const login = (details) => (dispatch) => {
   // details is an object {username, password}
 
-  return fetch("https://warm-fjord-92793.herokuapp.com/login", {
-  //return fetch("http://localhost:5001/login", {
+  return fetch(process.env.BACKEND_PORT + "/login", {
+    //return fetch("http://localhost:5001/login", {
     method: "POST",
     body: JSON.stringify(details),
     headers: {
@@ -65,7 +65,7 @@ export const login = (details) => (dispatch) => {
       console.log("response", response); //user details
       dispatch(addMyContent(response.user));
       alert("you logged in succefuly");
-      return {user: response.user};
+      return { user: response.user };
     })
     .catch(error => {
       console.log('login error: ', error);
@@ -74,13 +74,13 @@ export const login = (details) => (dispatch) => {
 };
 
 export const loginToken = () => (dispatch) => {
-   // try to login with cookies, will return user 0 if no cookies mached
+  // try to login with cookies, will return user 0 if no cookies mached
 
-   const token = cookie.load('auth');
-   return fetch("https://warm-fjord-92793.herokuapp.com/login-token", {
-   //return fetch("http://localhost:5001/login-token", {
+  const token = cookie.load('auth');
+  return fetch(process.env.BACKEND_PORT + "/login-token", {
+    //return fetch("http://localhost:5001/login-token", {
     method: "POST",
-    body: JSON.stringify({token}),
+    body: JSON.stringify({ token }),
     headers: {
       "Content-Type": "application/json",
     },
