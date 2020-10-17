@@ -42,7 +42,9 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 "Access-Control-Allow-Credentials": true,
                 dirName: 'users/dishes', /* optional, not working */
                 crossorigin: true,
-                url: process.env.BACKEND_PORT+"/upload" || "http://localhost:5001/upload",
+                //url: "http://localhost:5001/upload",
+                url: "https://warm-fjord-92793.herokuapp.com/upload",
+                // add to the end of the url the file name end take it from the backend
                 data: data
             };
 
