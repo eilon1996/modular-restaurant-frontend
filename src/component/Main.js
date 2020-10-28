@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 // the next comment allow the compiler to ignore the problem
 // eslint-disable-next-line
 import Menu from './Menu';
@@ -10,7 +10,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchMyContent, loginToken } from '../redux/ActionCreators';
+import { loginToken } from '../redux/ActionCreators';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';

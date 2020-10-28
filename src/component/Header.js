@@ -153,27 +153,26 @@ const Header = (props) => {
                                  
                                 </NavItem>*/}
                             </Nav>
-                            
+
                         </Collapse>
+                                <Button outline onClick={() => setIsModalOpen(!isModalOpen)} className="nav-link login"><span className="fa fa-sign-in"></span> Login</Button>
+ 
                     </div>
-                    <Nav className="ml-auto " navbar>
-                                <NavItem >
-                                    <Button outline onClick={() => setIsModalOpen(!isModalOpen)} className="nav-link login offset-2 offset-md-0"><span className="fa fa-sign-in"></span> Login</Button>
-                                </NavItem>
-                            </Nav>
                 </Navbar>
-                <Jumbotron style={{ backgroundColor: "rgba(" + [...color, 1] + ")" }} className="jumbotron">
+                <Jumbotron className="jumbotron" style={{ backgroundColor: "rgba(" + [...color, 1] + ")" }}>
+                    <div className="container header-container" style={{ backgroundColor: "rgba(" + [...color, 1] + ")" }} >
 
-                    <h1 className="h1-title">Design Your Restaurant</h1>
+                        <h1 className="h1-title">Design Your Restaurant</h1>
 
-                    <EditBox className="title" path={myContent.id} field="title" type="head" id="0" />
-                    <EditBox className="description" path={myContent.id} field="description" type="head" id="0" />
-                    <div className="colorPicker">
-                        <ColorPicker
-                            onChange={(c => setColor(Object.values(c["rgb"])))}
-                            size={240}
-                            initialColor={rgbToHex(color)}
-                        />
+                        <EditBox className="title" path={myContent.id} field="title" type="head" id="0" />
+                        <EditBox className="description" path={myContent.id} field="description" type="head" id="0" />
+                        <div className="colorPicker">
+                            <ColorPicker
+                                onChange={(c => setColor(Object.values(c["rgb"])))}
+                                size={240}
+                                initialColor={rgbToHex(color)}
+                            />
+                        </div>
                     </div>
                 </Jumbotron>
                 <Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)}>
@@ -186,7 +185,7 @@ const Header = (props) => {
                         >
                             <Tab eventKey="login" title="login">
                                 <form name="login" onSubmit={handleLogin}>
-                                    <label className="col-12 col-md-3" style={{ marginTop: "12px", marginBottom: "8px" }}>user name</label>
+                                    <label className="col-12 col-md-3" style={{ marginTop: "12px", marginBottom: "8px" }}>username</label>
                                     <input className="col-12 col-md-9" style={{ marginTop: "4px", marginBottom: "8px" }} name="loginUsername" value={loginUsername}
                                         onChange={(event) => setLoginUsername(event.target.value)}
                                         ref={register({ required: true })} />
@@ -205,7 +204,7 @@ const Header = (props) => {
 
                             <Tab eventKey="signUp" title="sign up">
                                 <form name="signup" onSubmit={handleSignup}>
-                                    <label className="col-12 col-md-3" style={{ marginTop: "12px", marginBottom: "8px" }}>user name</label>
+                                    <label className="col-12 col-md-3" style={{ marginTop: "12px", marginBottom: "8px" }}>username</label>
                                     <input className="col-12 col-md-9" style={{ marginTop: "4px", marginBottom: "8px" }} name="signupUsername" value={signupUsername}
                                         onChange={(event) => setSignupUsername(event.target.value)} />
 

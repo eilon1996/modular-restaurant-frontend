@@ -2,7 +2,6 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/externalUrl';
 import cookie from 'react-cookies';
-import axios from 'axios';
 
 ////////////  signup  ////////////
 
@@ -31,7 +30,7 @@ export const signup = (jsonObject) => (dispatch) => {
       console.log(response.token);
       cookie.save('auth',response["token"], { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(addMyContent(jsonObject));
-      alert("you signed up succefuly");
+      alert("you signed up successfully");
       return "";
     })
     .catch(error => {
@@ -64,7 +63,7 @@ export const login = (details) => (dispatch) => {
       }
       console.log("response", response); //user details
       dispatch(addMyContent(response.user));
-      alert("you logged in succefuly");
+      alert("you logged in successfully");
       return {user: response.user};
     })
     .catch(error => {
