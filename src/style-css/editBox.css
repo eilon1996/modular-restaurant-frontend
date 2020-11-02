@@ -1,15 +1,19 @@
 /*****HEADER*****/
 
 .editBox{
+  width:100%;
   display: grid;
   grid-template-rows: auto 25px ;
   grid-template-areas: 
   "text"
   "buttons";
+  overflow: auto;
 }
 
 span, input, textarea{
   grid-area: text;
+
+  width:100%;
 }
 
 div.lower{
@@ -39,17 +43,6 @@ div.lower{
   width: 30px;
   border-radius: 6px;
   margin: 2px;
-}
-
-
-@media screen and (min-width: 768px){
-
-
-}
-
-@media screen and (max-width: 768px){
-
-
 }
 
 

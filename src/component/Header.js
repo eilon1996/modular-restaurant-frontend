@@ -50,7 +50,6 @@ const Header = (props) => {
     useEffect(() => {
         console.log("color: ", color);
         if (color && myContent.color !== color) {
-            debugger
             myContent.color = color;
             dispatch(putContent(myContent))
         }
@@ -131,18 +130,18 @@ const Header = (props) => {
                         <Collapse isOpen={isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link ml-md-5 offset-2 offset-md-0" to="/home">
-                                        <span className="fa fa-home"></span> Home
+                                    <NavLink className="nav-link collapse-nav-link" to="/home">
+                                        <span className="fa fa-home"> Home</span>
                                 </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link offset-2 offset-md-0" to="/aboutus">
-                                        <span className="fa fa-info"></span> About Us
+                                    <NavLink className="nav-link collapse-nav-link" to="/aboutus">
+                                        <span className="fa fa-info"> About Us</span>
                                 </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link offset-2 offset-md-0" to="/menu">
-                                        <span className="fa fa-list"></span> Menu
+                                    <NavLink className="nav-link collapse-nav-link" to="/menu">
+                                        <span className="fa fa-list"> Menu</span>
                                 </NavLink>
                                 </NavItem>
                                 {/* 
@@ -155,8 +154,7 @@ const Header = (props) => {
                             </Nav>
 
                         </Collapse>
-                                <Button outline onClick={() => setIsModalOpen(!isModalOpen)} className="nav-link login"><span className="fa fa-sign-in"></span> Login</Button>
- 
+                                <Button outline onClick={() => setIsModalOpen(!isModalOpen)} className="nav-link login"><span className="fa fa-sign-in"> Login</span></Button>
                     </div>
                 </Navbar>
                 <Jumbotron className="jumbotron" style={{ backgroundColor: "rgba(" + [...color, 1] + ")" }}>

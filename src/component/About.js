@@ -154,10 +154,10 @@ function About(props) {
                                 <Fade in>
 
                                     <div key={employee.id} className="staff-card">
+                                        <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                                         <img src={employee.image} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">
                                             <EditBox type={"staff"} id={employee.id} field={"label"} className="staff-label" />
-                                            <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                                         </div>
                                         <EditBox type={"staff"} id={employee.id} field={"title"} className="staff-title" />
                                         <div className="staff-description">
