@@ -102,4 +102,8 @@
   .collapse-nav-link{
     margin-left: 68px;
   }
+
+  .editBox > span{
+    text-align: center;
+  }
 }
