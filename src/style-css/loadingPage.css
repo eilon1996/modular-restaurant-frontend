@@ -1,0 +1,84 @@
+/*****HEADER*****/
+
+.loading-header {
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "h1-title             h1-title"
+    "loading-title        loading-cycle"
+    "loading-description  loading-cycle";
+  color: white;
+}
+
+.h1-title {
+  grid-area: h1-title;
+}
+
+.loading-title {
+  grid-area: loading-title;
+  font-size: 90px;
+}
+
+.loading-description {
+  grid-area: loading-description;
+  font-size: 60px;
+}
+
+.loading-cycle {
+  grid-area: loading-cycle;
+  justify-self: end;
+}
+
+.loading-cycle > span {
+  position: relative;
+  top: 70px;
+  right: 100px;
+  font-size: 70px;
+  color: white !important;
+}
+
+
+.loading-header {
+  height: 444px;
+}
+.loading-footer {
+  height: 258px;
+}
+
+@media screen and (max-width: 768px) {
+  .loading-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "h1-title"
+      "loading-title"
+      "loading-description"
+      "loading-cycle";
+
+    row-gap: 20px;
+    padding: 50px 50px;
+    justify-content: center;
+  }
+
+  .loading-header * {
+    text-align: center;
+    margin: 0px auto;
+  }
+
+  .loading-cycle > span {
+    position: inherit;
+    top: auto;
+    right: auto;
+  }
+
+  .loading-header {
+    height: 799px;
+  }
+  .loading-footer {
+    height: 277px;
+  }
+
+}

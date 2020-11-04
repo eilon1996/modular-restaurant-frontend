@@ -54,7 +54,7 @@ function Footer(props) {
 
                     :
 
-                    <div className="col-12 col-sm-4 social-links-div">
+                    <div className="col-12 col-sm-4 mt-4 mt-sm-0 social-links-div">
                         <h2>our social</h2>
                         <div className="social-links" id={edit}>
                             <a style={{display:facebook && facebook.length>0?"":"none" }} className="btn btn-social-icon btn-facebook" href={facebook}><i className="fa fa-facebook"></i></a>

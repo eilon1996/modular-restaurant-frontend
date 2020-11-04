@@ -8,6 +8,7 @@ import Home from './Home';
 import DishDetail from './Dishdetail';
 import Header from './Header';
 import Footer from './Footer';
+import LoadingPage from './LoadingPage';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { loginToken } from '../redux/ActionCreators';
@@ -46,6 +47,10 @@ function Main(props) {
       dispatch(loginToken());
     }
   }, []);
+
+  if (myContent === null){
+    return(<LoadingPage/>)
+  }
 
   const HeaderPart = () => {
     return (<Header />);
