@@ -18,7 +18,7 @@ import '../style-css/header.css';
 
 const Header = (props) => {
 
-     const [ {casing}, {credentials}, {dishes}, {thePlace}, {staff} ]= useSelector(store =>[ store.casing, store.credentials, store.dishes, store.thePlace, store.staff])
+     const [ {casing}, {credentials}, {dishes}, {thePlace}, {staff}, {page} ]= useSelector(store =>[ store.casing, store.credentials, store.dishes, store.thePlace, store.staff, store.page])
     //const { casing } = useSelector(store => store.casing);
     //const { credentials } = useSelector(store => store.credentials);
     const dispatch = useDispatch();
@@ -35,9 +35,25 @@ const Header = (props) => {
     const [signupRePassword, setSignupRePassword] = useState("");
 
 
-    const [flipText, setFlipText] = useState("one page");
+   /*  const [flipText, setFlipText] = useState("one page");
     const [flipClass, setFlipClass] = useState("one-page");
+ */
 
+     const [flipText, setFlipText] = useState(() => {
+        if (page) {
+            if (page === "one") return "one page";
+            return "multi page"
+        }
+        return null;
+    });
+
+    const [flipClass, setFlipClass] = useState(() => {
+        if (page) {
+            if (page === "one") return "one-page";
+            return "multi-page"
+        }
+        return null;
+    }); 
 
     const [color, setColor] = useState(() => {
         if (casing) {
@@ -91,7 +107,7 @@ const Header = (props) => {
         }
         credentials.id = signupUsername;
         credentials.password = signupPassword;
-        const myContent = {casing, credentials, dishes, thePlace, staff}
+        const myContent = {casing, credentials, dishes, thePlace,staff, page}
         dispatch(signup(myContent)).then(res => {
             if (res !== "") {
                 setSignupError(res);
@@ -120,9 +136,11 @@ const Header = (props) => {
 
     function toMultiPage() {
         setFlipText("multi page");
-        setFlipClass("multi-page")
+        setFlipClass("multi-page");
+        dispatch(patchContent(page, "page", "multi"));
     }
     function toOnePage() {
+        dispatch(patchContent(page, "page", "one"));
         setFlipText("one page");
         setFlipClass("one-page")
     }
@@ -172,8 +190,8 @@ const Header = (props) => {
 
                     <h1 className="h1-title">Design Your Restaurant</h1>
 
-                    <EditBox className="title" field="title" type="casing" id="0" />
-                    <EditBox className="description" field="description" type="casing" id="0" />
+                    <EditBox className="title" field="title" type="casing" itemId="0" />
+                    <EditBox className="description" field="description" type="casing" itemId="0" />
                     <div className="colorPicker">
                         <ColorPicker
                             onChange={(c => setColor(Object.values(c["rgb"])))}
@@ -183,7 +201,8 @@ const Header = (props) => {
                         <div class={"flip-container " + flipClass + "-container"}>
                             <div class="background-btn" onClick={() => toOnePage()}><span>one page</span></div>
                             <div class="background-btn" onClick={() => toMultiPage()}><span>multi page</span></div>
-                            <div class={"flip-btn " + flipClass + "-btn"} >{flipText}</div>
+                             {/*<button class={"btn btn-dark flip-btn " + flipClass + "-btn"} >{flipText}</button>*/}
+                            <div class={"flip-btn " + flipClass + "-btn"} >{flipText}</div> 
                         </div>
                     </div>
                 </div>

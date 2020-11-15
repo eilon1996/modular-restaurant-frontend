@@ -71,7 +71,7 @@ function DishDetail(props) {
                                 labelledBy={"Select"}
                                 selectedValues={selected}
                             />
-                            <EditBox field="description" type="dishes" id={props.id} />
+                            <EditBox field="description" type="dishes" itemId={props.id} />
                         </CardText>
                     </CardBody>
                 </Card>
@@ -200,7 +200,7 @@ function DishDetail(props) {
                         <BreadcrumbItem active>{dishes[props.id].title.text}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <EditBox type="dishes" field="title" id={props.id} />
+                        <EditBox type="dishes" field="title" itemId={props.id} />
                         <hr />
                     </div>
                     <div className="row">

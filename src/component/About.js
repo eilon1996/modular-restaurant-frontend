@@ -154,11 +154,11 @@ function About(props) {
                                         <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                                         <img src={employee.image} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">
-                                            <EditBox type={"staff"} id={employee.id} field={"label"} className="staff-label" />
+                                            <EditBox type={"staff"} itemId={employee.id} field={"label"} className="staff-label" />
                                         </div>
-                                        <EditBox type={"staff"} id={employee.id} field={"title"} className="staff-title" />
+                                        <EditBox type={"staff"} itemId={employee.id} field={"title"} className="staff-title" />
                                         <div className="staff-description">
-                                            <EditBox type={"staff"} id={employee.id} field={"description"} />
+                                            <EditBox type={"staff"} itemId={employee.id} field={"description"} />
                                         </div>
                                     </div>
                                 </Fade>

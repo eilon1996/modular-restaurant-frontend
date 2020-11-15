@@ -6,6 +6,7 @@ import { Dishes } from './dishes';
 import { ThePlace } from './thePlace';
 import { Casing } from './casing';
 import { Staff } from './staff';
+import { Page } from './page';
 
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
@@ -18,6 +19,7 @@ export const Store = () => {
             casing: Casing,
             credentials:Credentials,
             staff: Staff,
+            page: Page,
             thePlace: ThePlace,
             dishes: Dishes,
         }),

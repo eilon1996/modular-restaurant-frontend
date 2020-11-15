@@ -18,7 +18,7 @@
   height: 100%;
   background-color: transparent;
 }
-.flip-btn{
+/* .flip-btn{
   display: flex;
   text-align: center;
   text-justify: center;
@@ -30,33 +30,39 @@
   background-color: black;
   color: white;
 }
+ */
 
+.flip-btn{
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+  position: absolute;
+  background-color: black;
+}
 
 
 .one-page-btn{
-  transition-duration: 1s;
-  transform: rotateY(0deg);
   animation-name: one-page-btn-anima;
   animation-duration: 1s;
   animation-fill-mode: forwards; 
   animation-timing-function:ease-in-out;
 }
 @keyframes one-page-btn-anima{
-  0%{left:50%; width:50%; top:0%;}
-  100%{left:0%;width:50%; top:0%;}
+  0%{left:50%; width:50%; top:0%; transform: rotateY(0deg);}
+  100%{left:0%;width:50%; top:0%; transform: rotateY(360deg);}
 } 
 
 .multi-page-btn{
   transition-duration: 1s;
-  transform: rotateY(-360deg);
   animation-name: multi-page-btn-anima;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  animation-timing-function: linear;
+  animation-timing-function:ease-in-out;
 }
 @keyframes multi-page-btn-anima{
-  0%{left:0%;}
-  100%{left:50%;}
+  0%{left:0%; width:50%; top:0%; transform: rotateY(0deg);}
+  100%{left:50%;width:50%; top:0%; transform: rotateY(360deg);}
 }
 
 .header-container {

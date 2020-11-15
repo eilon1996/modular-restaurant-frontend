@@ -41,27 +41,26 @@ const mapDispatchToProps = dispatch => {
 
 function Main(props) {
 
-  const { casing } = useSelector(store => store.casing);
+  const { page } = useSelector(store => store.page);
   const dispatch = useDispatch();
 
   useEffect(() => {
     console.log("main useEffect")
-    if (casing);
+    if (page);
     else {
       dispatch(loginToken());
     }
   }, []);
 
-  if (casing) {
-    if (casing.page === "one") {
+  if (page) {
+    if (page === "one") {
       //   if (casing.page = "one") {
       const OnePage = () => {
         return (
           <React.Fragment>
             <Header />
-            <Home />
-            <About />
             <Menu />
+            <About />
             {/* <DishDetail id={parseInt(match.params.id, 10)} /> */}
             <Footer />
           </React.Fragment>

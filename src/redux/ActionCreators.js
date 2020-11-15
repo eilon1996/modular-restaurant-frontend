@@ -1,4 +1,3 @@
-
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/externalUrl';
 import cookie from 'react-cookies';
@@ -33,6 +32,7 @@ export const signup = (details) => (dispatch) => {
       dispatch(add(details.dishes, ActionTypes.ADD_DISHES));
       dispatch(add(details.staff, ActionTypes.ADD_STAFF));
       dispatch(add(details.thePlace, ActionTypes.ADD_THEPLACE));
+      dispatch(add(details.page, ActionTypes.ADD_PAGE));
       alert("you signed up successfully");
       return "";
     })
@@ -69,6 +69,7 @@ export const login = (details) => (dispatch) => {
       dispatch(add(response.user.dishes, ActionTypes.ADD_DISHES));
       dispatch(add(response.user.staff, ActionTypes.ADD_STAFF));
       dispatch(add(response.user.thePlace, ActionTypes.ADD_THEPLACE));
+      dispatch(add(response.user.page, ActionTypes.ADD_PAGE));
       alert("you logged in successfully");
       return {user: response.user};
     })
@@ -108,6 +109,7 @@ export const loginToken = () => (dispatch) => {
       dispatch(add(myContent.staff, ActionTypes.ADD_STAFF));
       dispatch(add(myContent.thePlace, ActionTypes.ADD_THEPLACE));
       dispatch(add(myContent.casing, ActionTypes.ADD_CASING));
+      dispatch(add(myContent.page, ActionTypes.ADD_PAGE));
     })
     .catch(error => {
       console.log('login error: ', error);
@@ -117,7 +119,7 @@ export const loginToken = () => (dispatch) => {
 
 
 
-///////////putContnet///////////
+///////////patchContent///////////
 
 export const patchContent = (id, type, content) => (dispatch) => {
 
