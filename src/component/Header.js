@@ -35,10 +35,6 @@ const Header = (props) => {
     const [signupRePassword, setSignupRePassword] = useState("");
 
 
-   /*  const [flipText, setFlipText] = useState("one page");
-    const [flipClass, setFlipClass] = useState("one-page");
- */
-
      const [flipText, setFlipText] = useState(() => {
         if (page) {
             if (page === "one") return "one page";
@@ -199,10 +195,10 @@ const Header = (props) => {
                             initialColor={rgbToHex(color)}
                         />
                         <div class={"flip-container " + flipClass + "-container"}>
-                            <div class="background-btn" onClick={() => toOnePage()}><span>one page</span></div>
-                            <div class="background-btn" onClick={() => toMultiPage()}><span>multi page</span></div>
+                            <div class="background-btn" onClick={() => toOnePage()}><strong>one page</strong></div>
+                            <div class="background-btn" onClick={() => toMultiPage()}><strong>multi page</strong></div>
                              {/*<button class={"btn btn-dark flip-btn " + flipClass + "-btn"} >{flipText}</button>*/}
-                            <div class={"flip-btn " + flipClass + "-btn"} >{flipText}</div> 
+                            <div class={"flip-btn " + flipClass + "-btn"} ><strong>{flipText}</strong></div> 
                         </div>
                     </div>
                 </div>

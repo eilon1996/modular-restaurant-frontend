@@ -64,6 +64,7 @@ export const login = (details) => (dispatch) => {
         throw response.err;
       }
       console.log("response", response); //user details
+      cookie.save('auth',response.user.credentials.token, { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(add(response.user.casing, ActionTypes.ADD_CASING));
       dispatch(add(response.user.credentials, ActionTypes.ADD_CREDENTIALS));
       dispatch(add(response.user.dishes, ActionTypes.ADD_DISHES));
@@ -103,6 +104,7 @@ export const loginToken = () => (dispatch) => {
       return response.user;
     })
     .then(myContent => {
+      cookie.save('auth',myContent.credentials.token, { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(loading(myContent.casing, ActionTypes.CASING_LOADING));
       dispatch(add(myContent.credentials, ActionTypes.ADD_CREDENTIALS));
       dispatch(add(myContent.dishes, ActionTypes.ADD_DISHES));
