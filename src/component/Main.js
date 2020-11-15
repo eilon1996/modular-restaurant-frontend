@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 // the next comment allow the compiler to ignore the problem
 // eslint-disable-next-line
 import Menu from './Menu';
-import Contact from './Contact';
 import About from './About';
 import Home from './Home';
 import DishDetail from './Dishdetail';
@@ -17,7 +16,13 @@ import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-
+//set cookies in chrome
+// TODO:add re-arange styles - one page/ multi page/ 
+// TODO:add feture option squares/ carosel 
+// TODO:menu-dishes modal/new page
+// TODO:loading page - jumping dots , add content
+// TODO: new domain for a user 
+// TODO: view mode
 
 const mapStateToProps = state => {
   console.log("mapStateToProps", state.content);
@@ -36,51 +41,68 @@ const mapDispatchToProps = dispatch => {
 
 function Main(props) {
 
- // const [didDispatch, setDidDispatch] = useState(false)
-  const { myContent } = useSelector(store => store.myContent);
+  const { casing } = useSelector(store => store.casing);
   const dispatch = useDispatch();
 
   useEffect(() => {
     console.log("main useEffect")
-    if (myContent === null) {
-      //setDidDispatch(true);
+    if (casing);
+    else {
       dispatch(loginToken());
     }
   }, []);
 
-  if (myContent === null){
-    return(<LoadingPage/>)
-  }
-
-  const HeaderPart = () => {
-    return (<Header />);
-  };
-
-  const FooterPart = () => {
-    return (<Footer />);
-  };
-
-  return (
-    <div>
-      <HeaderPart />
-      <TransitionGroup>
-        <CSSTransition key={props.location.key} classNames="page" timeout={300}>
+  if (casing) {
+    if (casing.page === "one") {
+      //   if (casing.page = "one") {
+      const OnePage = () => {
+        return (
+          <React.Fragment>
+            <Header />
+            <Home />
+            <About />
+            <Menu />
+            {/* <DishDetail id={parseInt(match.params.id, 10)} /> */}
+            <Footer />
+          </React.Fragment>
+        )
+      };
+      return (
+        <div className="onePage">
           <Switch location={props.location}>
-            <Route path='/home' component={() => <Home />} />
-            <Route exact path='/aboutus' component={() => <About />} />
-            <Route exact path='/menu' component={() => <Menu />} />
+            <Route exact path='/home' component={() => <OnePage />} />
             <Route path='/menu/:id' component={({ match }) => <DishDetail id={parseInt(match.params.id, 10)} />} />
-            <Route exact path='/contactus' component={() =>
-              <Contact resetFeedbackForm={props.resetFeedbackForm}
-                postFeedback={props.postFeedback} />} />
             <Redirect to="/home" />
           </Switch>
-        </CSSTransition>
-      </TransitionGroup>
-      <FooterPart />
-    </div>
-  );
+        </div>
+      );
+    }
 
+    //else
+    return (
+      <div>
+        <Header />
+        <TransitionGroup>
+          <CSSTransition key={props.location.key} classNames="page" timeout={300}>
+            <Switch location={props.location}>
+              <Route path='/home' component={() => <Home />} />
+              <Route exact path='/aboutus' component={() => <About />} />
+              <Route exact path='/menu' component={() => <Menu />} />
+              <Route path='/menu/:id' component={({ match }) => <DishDetail id={parseInt(match.params.id, 10)} />} />
+              {/* <Route exact path='/contactus' component={() =>
+                   <Contact resetFeedbackForm={props.resetFeedbackForm}
+                     postFeedback={props.postFeedback} />} />  */}
+              <Redirect to="/home" />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
+        <Footer />
+      </div>
+    );
+
+  }
+
+  return (<LoadingPage />)
 }
 // this connect the main to the redux store and allow accsess to its fields
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)((Main)));

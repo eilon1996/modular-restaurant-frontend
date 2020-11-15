@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardImg, CardImgOverlay, Breadcrumb, BreadcrumbItem, Collapse, CardBody, CardText } from 'reactstrap';
 import MultiSelect from "react-multi-select-component";
 import { Link } from 'react-router-dom';
-import Loading from './Loading'
 import { useSelector, useDispatch } from 'react-redux';
-import { putContent } from '../redux/ActionCreators';
+import { patchContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 
 import '../style-css/menu.css';
 
 const Menu = (props) => {
 
-    const { myContent, isLoading } = useSelector(store => store.myContent);
+    const {id} = useSelector(store => store.credentials.credentials);
+    const store = useSelector(store => store);
+    const {dishes} = useSelector(store => store.dishes);
     const [render, setRender] = useState(0);
     const dispatch = useDispatch()
 
@@ -33,8 +34,8 @@ const Menu = (props) => {
         ]
 
         function handleSubmit(event) {
-            const amount = myContent.dishes.length;
-            let newDish = JSON.parse(JSON.stringify(myContent.dishes[amount - 1]));
+            const amount = dishes.length;
+            let newDish = JSON.parse(JSON.stringify(dishes[amount - 1]));
 
             newDish.title.text = title;
             newDish.label = selected.map(label => label.label).join();
@@ -42,9 +43,9 @@ const Menu = (props) => {
             newDish.id = amount;
             newDish.comments = null;
             newDish.image = imgUrl;
-            myContent.dishes[amount] = newDish;
+            dishes[amount] = newDish;
             setShowForm(false);
-            dispatch(putContent(myContent));
+            dispatch(patchContent(id,"dishes",dishes));
             setTitle("");
             setSelected([]);
             setDescription("");
@@ -61,7 +62,7 @@ const Menu = (props) => {
                         <CardBody>
                             <form onSubmit={(event) => handleSubmit(event)} className="addDish-form">
                                 <input value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="dish name" />
-                                <UploadS3 type={"dishes"} itemId={Object.keys(myContent.dishes).length} contentId={myContent.id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                                <UploadS3 type={"dishes"} itemId={Object.keys(dishes).length} contentId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                                 <CardText>
                                     <span>{(selected && selected.length === 2) ? <span>Hot 🌶 &amp; Vegan 🌱</span> : null}</span>
                                     <MultiSelect
@@ -83,20 +84,18 @@ const Menu = (props) => {
         )
     }
 
-    function deleteDish(id) {
-        let ans = window.confirm(myContent.dishes[id].title.text + " is going to be deleted");
+    function deleteDish(dishId) {
+        let ans = window.confirm(dishes[dishId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
-
         let newDishes = [];
-        for (let i = 0; i < id; i++) {
-            newDishes.push(myContent.dishes[i])
+        for (let i = 0; i < dishId; i++) {
+            newDishes.push(dishes[i])
         }
-        for (let i = id; i < myContent.dishes.length - 1; i++) {
-            myContent.dishes[i + 1].id = i;
-            newDishes.push(myContent.dishes[i + 1])
+        for (let i = dishId; i < dishes.length - 1; i++) {
+            dishes[i + 1].id = i;
+            newDishes.push(dishes[i + 1])
         }
-        myContent.dishes = newDishes
-        dispatch(putContent(myContent));
+        dispatch(patchContent(id,"dishes",newDishes));
         setRender(render + 1);
     }
 
@@ -111,14 +110,8 @@ const Menu = (props) => {
                     <h3>menu</h3> <hr />
                 </div>
             </div>
-            {(isLoading || myContent === null) ?
                 <div className="row">
-                    <div className="col-12 col-md-5 m-1"> <Loading /> </div>
-                    <div className="col-12 col-md-5 m-1"> <Loading /> </div>
-                </div>
-                :
-                <div className="row">
-                    {myContent.dishes.map((dish) => (
+                    {dishes.map((dish) => (
                         true ?
                             <div className="col-6 col-md-4 menu-card">
                                 <Link to={`/menu/${dish.id}`} key={dish.id}>
@@ -145,7 +138,6 @@ const Menu = (props) => {
                     ))}
                     <AddDish />
                 </div>
-            }
         </div>
     );
 }

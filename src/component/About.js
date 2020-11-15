@@ -5,34 +5,31 @@ import Loading from './Loading';
 import { Fade, Stagger } from 'react-animation-components';
 import EditBox from './EditBox';
 import { useSelector, useDispatch } from 'react-redux';
-import { putContent } from '../redux/ActionCreators';
+import { patchContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import '../style-css/about.css';
 
 
-
-
-
 function About(props) {
 
-    const { myContent, isLoading } = useSelector(store => store.myContent);
+    const {staff} = useSelector(store => store.staff);
+    const {id} = useSelector(store => store.credentials.credentials);
     const dispatch = useDispatch()
     const [render, setRender] = useState(0); // change when adding new employee to triger re render 
 
     function deleteEmployee(id) {
-        let ans = window.confirm(myContent.staff[id].title.text + " is going to be deleted");
+        let ans = window.confirm(staff[id].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
 
         let newStaff = [];
         for (let i = 0; i < id; i++) {
-            newStaff.push(myContent.staff[i])
+            newStaff.push(staff[i])
         }
-        for (let i = id; i < myContent.staff.length - 1; i++) {
-            myContent.staff[i + 1].id = i;
-            newStaff.push(myContent.staff[i + 1])
+        for (let i = id; i < staff.length - 1; i++) {
+            staff[i + 1].id = i;
+            newStaff.push(staff[i + 1])
         }
-        myContent.staff = newStaff
-        dispatch(putContent(myContent));
+        dispatch(patchContent(id,"staff",newStaff));
         setRender(render + 1);
     }
 
@@ -46,17 +43,17 @@ function About(props) {
         const [imgUrl, setImgUrl] = useState();
 
         function handleSubmit(event) {
-            const amount = myContent.staff.length;
-            let newEmployee = JSON.parse(JSON.stringify(myContent.staff[amount - 1]));
+            const amount = staff.length;
+            let newEmployee = JSON.parse(JSON.stringify(staff[amount - 1]));
 
             newEmployee.title.text = title;
             newEmployee.label.text = label;
             newEmployee.description.text = description;
             newEmployee.id = amount;
             newEmployee.image = imgUrl;
-            myContent.staff[amount] = newEmployee;
+            staff[amount] = newEmployee;
             setShowForm(false);
-            dispatch(putContent(myContent));
+            dispatch(patchContent(id,"staff",staff));
             setTitle("");
             setLabel("");
             setDescription("");
@@ -71,7 +68,7 @@ function About(props) {
                 <Collapse isOpen={showForm} navbar>
                     <form className="staff-card add-staff" onSubmit={(event) => handleSubmit(event)}>
                         <div className="staff-image" >
-                            <UploadS3 type={"staff"} itemId={Object.keys(myContent.dishes).length} contentId={myContent.id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                            <UploadS3 type={"staff"} itemId={Object.keys(staff).length} contentId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                         </div>
                         <div className="staff-header">
                             <input className="staff-label" value={label} onChange={(event) => setLabel(event.target.value)} name="label" placeholder="staff member job" />
@@ -149,8 +146,8 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {isLoading ? <Loading /> : <Stagger in>
-                            {myContent.staff.map((employee) => (
+                        <Stagger in>
+                            {staff.map((employee) => (
                                 <Fade in>
 
                                     <div key={employee.id} className="staff-card">
@@ -165,11 +162,9 @@ function About(props) {
                                         </div>
                                     </div>
                                 </Fade>
-
                             ))}
-
                             <AddEmployee />
-                        </Stagger>}
+                        </Stagger>
                     </Media>
                 </div>
             </div>

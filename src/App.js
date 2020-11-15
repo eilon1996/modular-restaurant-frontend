@@ -4,10 +4,10 @@ import Main from './component/Main';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/configerStore';
+import { Store } from './redux/Store';
 
 
-const store = ConfigureStore();
+const store = Store();
   
 class App extends Component{
 

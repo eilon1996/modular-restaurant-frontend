@@ -2,6 +2,7 @@
 
 .editBox{
   width:100%;
+  max-width:100%;
   display: grid;
   grid-template-rows: auto 25px ;
   grid-template-areas: 

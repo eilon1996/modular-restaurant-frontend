@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from './Loading'
 import { useDebounce } from 'use-debounce';
 import { useSelector, useDispatch } from 'react-redux';
-import { putContent } from '../redux/ActionCreators'
+import { patchContent } from '../redux/ActionCreators'
 
 import '../style-css/editBox.css';
 const EditBox = ({ type, id, field }) => {
@@ -10,20 +10,20 @@ const EditBox = ({ type, id, field }) => {
     //id      0/1/2..
     //field   title/description
 
-    const { myContent, isLoading } = useSelector(store => store.myContent);
+    const  contentType  = useSelector(store => store[type][type]);
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
 
     const [fontFamily, setFontFamily] = useState(() => {
-        if (myContent)
-            return (myContent[type][id][field].fontFamily);
+        if (contentType)
+            return (contentType[id][field].fontFamily);
 
         return null;
     });
 
     const [fontSize, setFontSize] = useState(() => {
-        if (myContent) {
-            const size = myContent[type][id][field].fontSize;
+        if (contentType) {
+            const size = contentType[id][field].fontSize;
             if (typeof size == "string" && size.indexOf("px") > -1)
                 return (size.slice(0, size.length - 2)); // to remove the "px" if exist
             else
@@ -34,15 +34,15 @@ const EditBox = ({ type, id, field }) => {
 
     const [debouncedFontSize] = useDebounce(fontSize, 750);
     useEffect(() => {
-        if (myContent !== null && fontSize !== undefined && fontSize !== myContent[type][id][field].fontSize) {
+        if (contentType !== null && fontSize !== undefined && fontSize !== contentType[id][field].fontSize) {
             console.log("debounce");
-            myContent[type][id][field].fontSize = fontSize;
-            dispatch(putContent(myContent));
+            contentType[id][field].fontSize = fontSize;
+            dispatch(patchContent(id,type,contentType));
         }
     }, [debouncedFontSize]);
     const [text, setText] = useState(() => {
-        if (myContent)
-            return (myContent[type][id][field].text);
+        if (contentType)
+            return (contentType[id][field].text);
 
         return null;
     })
@@ -52,16 +52,13 @@ const EditBox = ({ type, id, field }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        myContent[type][id][field].text = text;
-        myContent[type][id][field].fontFamily = fontFamily
-        dispatch(putContent(myContent));
+        contentType[id][field].text = text;
+        contentType[id][field].fontFamily = fontFamily
+        dispatch(patchContent(id,type,contentType));
         setEdit(false)
     }
 
     return (
-        isLoading || myContent === null || myContent === undefined ?
-            <Loading />
-            :
             edit ?
                 <form onSubmit={(event) => handleSubmit(event)} className={"editBox "+type + "-" + field}>
                     {field === "title" ?

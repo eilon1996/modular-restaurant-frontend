@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { putContent } from '../redux/ActionCreators';
+import { patchContent } from '../redux/ActionCreators';
 import { useSelector, useDispatch } from 'react-redux';
 import '../style-css/footer.css';
 
 function Footer(props) {
 
-    const { myContent, isLoading } = useSelector(store => store.myContent);
+    const {casing} = useSelector(store => store.casing);
+    const {id} = useSelector(store => store.credentials.credentials);
     const dispatch = useDispatch();
-
+    const social = casing.social;
+    const color = casing.color;
+    
 
     const Links = () => {
         const [edit, setEdit] = useState(false);
-        const [facebook, setFacebook] = useState(myContent.footer.facebook);
-        const [instagram, setInstagram] = useState(myContent.footer.instagram);
-        const [twitter, setTwitter] = useState(myContent.footer.twitter);
-        const [youtube, setYoutube] = useState(myContent.footer.youtube);
-        const [email, setEmail] = useState(myContent.footer.email);
+        const [facebook, setFacebook] = useState(social.facebook);
+        const [instagram, setInstagram] = useState(social.instagram);
+        const [twitter, setTwitter] = useState(social.twitter);
+        const [youtube, setYoutube] = useState(social.youtube);
+        const [email, setEmail] = useState(social.email);
 
         function handleSubmit(event) {
             event.preventDefault();
-            myContent.footer.facebook = facebook;
-            myContent.footer.instagram = instagram;
-            myContent.footer.twitter = twitter;
-            myContent.footer.youtube = youtube;
-            myContent.footer.email = email;
+            social.facebook = facebook;
+            social.instagram = instagram;
+            social.twitter = twitter;
+            social.youtube = youtube;
+            social.email = email;
             setEdit(false);
-            dispatch(putContent(myContent));
+            dispatch(patchContent(id,"casing",casing));
 
         }
 
@@ -69,12 +72,8 @@ function Footer(props) {
     }
 
 
-    // TODO triger re-render when color change
     return (
-
-        (isLoading || myContent === null) ? null :
-
-            <div className="footer" style={{ backgroundColor: "rgba(" + [...myContent.color.map(c => c / 2), 0.5] + ")" }}>
+            <div className="footer" style={{ backgroundColor: "rgba(" + [...color.map(c => c / 2), 0.5] + ")" }}>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-6 col-sm-4 social-links-div" >

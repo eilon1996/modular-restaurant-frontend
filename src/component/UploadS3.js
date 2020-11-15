@@ -76,7 +76,7 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
       canCancel,
       canRemove,
       canRestart,
-      inputContent,
+      inpatchContent,
       inputWithFilesContent,
       submitButtonDisabled,
       submitButtonContent,
@@ -101,7 +101,7 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 onChangeStatus={handleChangeStatus}
                 accept="image/*"
                 maxFiles={1}
-                inputContent={(files, extra) => (extra.reject ? 'Only Image is allowed' : 'Drop Image Here')}
+                inpatchContent={(files, extra) => (extra.reject ? 'Only Image is allowed' : 'Drop Image Here')}
                 styles={{
                     dropzoneReject: { borderColor: '#F19373', backgroundColor: '#F1BDAB' },
                     inputLabel: (files, extra) => (extra.reject ? { color: '#A02800' } : {}),
