@@ -54,7 +54,7 @@ function LoadingPage() {
                 </div>
             </Jumbotron>
             <div className="container">
-               
+               <p>please wait a moment for the content to be load</p>
                 </div>
 
             <div className="loading-footer" style={{ backgroundColor: "rgba(98,98,98,0.5)" }}>
