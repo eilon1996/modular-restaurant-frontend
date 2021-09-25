@@ -56,7 +56,6 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 })
                 .then((response) => {setprogress("showImg");})
                 .catch(function (error) {
-                    alert("axios error");
                     console.log("error", error);
                 });
 //            setprogress("showImg");

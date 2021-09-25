@@ -8,12 +8,11 @@
   grid-template-areas: 
   "text"
   "buttons";
-  /*overflow: visible;  this is the default behavair*/
+  /*overflow: visible;  this is the default*/
 }
 
 span, input, textarea{
   grid-area: text;
-
   width:100%;
 }
 

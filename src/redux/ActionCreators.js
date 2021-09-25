@@ -154,7 +154,6 @@ export const patchContent = (id, type, content) => (dispatch) => {
       })
     .catch(error => {
       console.log('submmit content', error.message);
-      alert('Your content could not be submited\nError: ' + error.message);
     });
 };
 
