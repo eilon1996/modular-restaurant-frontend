@@ -23,6 +23,8 @@ const EditBox = ({ type, itemId, field }) => {
     const [fontSize, setFontSize] = useState(() => {
         if (contentType) {
             const size = contentType[itemId][field].fontSize;
+            
+            console.log('font size of ',type, field, " is ", size);
             if (typeof size == "string" && size.indexOf("px") > -1)
                 return (size.slice(0, size.length - 2)); // to remove the "px" if exist
             else
@@ -87,11 +89,11 @@ const EditBox = ({ type, itemId, field }) => {
                         <button className="edit-save btn btn-secondary"
                             onClick={() => setEdit(true)}>edit</button>
                         <button className="edit-save-arrow btn btn-secondary"
-                            onClick={() => { fontSize < 70 ? setFontSize(fontSize + 2) : alert("this is the maximum font size") }}>
+                            onClick={() => { fontSize < 70 && setFontSize(fontSize + 2) }}>
                             <span className="fa fa-angle-up"></span>
                         </button>
                         <button className="edit-save-arrow btn btn-secondary"
-                            onClick={() => { fontSize > 8 ? setFontSize(fontSize - 2) : alert("this is the minimum font size") }}>
+                            onClick={() => { fontSize > 8 && setFontSize(fontSize - 2) }}>
                             <span className="fa fa-angle-down"></span>
                         </button>
                     </div>
