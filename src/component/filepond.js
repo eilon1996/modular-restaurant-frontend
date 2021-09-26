@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
@@ -19,6 +18,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
 // Our app
 function UploadS3() {
+  console.log("in filepond")
   const [files, setFiles] = useState([])
   return (
     <div className="App">

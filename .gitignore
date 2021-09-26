@@ -27,6 +27,7 @@ frontend/yarn-error.log*
 .git
 json-server
 db.json
+server-copy.json
 
 frontend/src/component/dist
 frontend/src/redux/dist

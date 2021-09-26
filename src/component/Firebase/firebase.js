@@ -10,23 +10,11 @@ const config = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   };
 
-  /*
-
-const config = {
-    apiKey: "AIzaSyAjreIApNZbLGivO_ZK31TB5fud2spBNnw",
-    authDomain: "modolar-restrunt.firebaseapp.com",
-    databaseURL: "https://modolar-restrunt.firebaseio.com",
-    projectId: "modolar-restrunt",
-    storageBucket: "modolar-restrunt.appspot.com",
-    messagingSenderId: "1023876063736",
-    appId: "1:1023876063736:web:cf95f640341e3e6b6ff60d",
-    measurementId: "G-H8RZKNZY8J"
-};
-*/
 
  
 class Firebase {
     constructor() {
+      console.log("test env: ",process.env.REACT_APP_API_KEY);
       app.initializeApp(config);
     }
   }

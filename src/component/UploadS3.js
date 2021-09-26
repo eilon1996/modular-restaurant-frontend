@@ -43,8 +43,7 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 dirName: 'users/dishes', /* optional, not working */
                 crossorigin: true,
                 //url: "http://localhost:5001/upload",
-                url: "https://warm-fjord-92793.herokuapp.com/upload",
-                // add to the end of the url the file name end take it from the backend
+                url: process.env.REACT_APP_BASE_URL + "upload",
                 data: data
             };
 

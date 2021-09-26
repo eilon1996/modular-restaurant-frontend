@@ -8,7 +8,6 @@ import {
 import { NavLink } from 'react-router-dom';
 import EditBox from './EditBox';
 import { Tabs, Tab } from "react-bootstrap";
-import { LogoUrl } from '../shared/externalUrl'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux';
 import { patchContent, signup, login } from '../redux/ActionCreators'
@@ -148,7 +147,7 @@ const Header = (props) => {
                 <div className="container container-nav">
                     <NavbarToggler onClick={() => setIsNavOpen(!isNavOpen)} />
                     <NavbarBrand href="/">
-                        <img src={LogoUrl} height="30" width="41" alt="" />
+                        <img src={process.env.REACT_APP_LOGO_URL} height="30" width="41" alt="" />
                     </NavbarBrand>
                     <Collapse isOpen={isNavOpen} navbar>
                         <Nav navbar>
