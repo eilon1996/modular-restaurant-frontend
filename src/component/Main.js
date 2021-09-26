@@ -50,7 +50,7 @@ function Main(props) {
     else {
       dispatch(loginToken());
     }
-  }, []);
+  }, );
 
   if (page) {
     if (page === "one") {

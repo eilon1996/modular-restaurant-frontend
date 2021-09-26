@@ -19,8 +19,7 @@ import '../style-css/header.css';
 const Header = (props) => {
 
      const [ {casing}, {credentials}, {dishes}, {thePlace}, {staff}, {page} ]= useSelector(store =>[ store.casing, store.credentials, store.dishes, store.thePlace, store.staff, store.page])
-    //const { casing } = useSelector(store => store.casing);
-    //const { credentials } = useSelector(store => store.credentials);
+
     const dispatch = useDispatch();
 
     const [isNavOpen, setIsNavOpen] = useState(false);

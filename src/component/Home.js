@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle} from 'reactstrap';
-import Loading  from './Loading';
 import { FadeTransform } from 'react-animation-components';
 import {useSelector} from 'react-redux';
 

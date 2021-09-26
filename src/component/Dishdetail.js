@@ -3,7 +3,6 @@ import { Card, CardImg, CardText, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Button, Modal, ModalBody, ModalHeader, Label, Col, Row } from 'reactstrap'
 import { Control, LocalForm, Errors } from 'react-redux-form';
-import Loading from './Loading';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 import EditBox from './EditBox';
 import MultiSelect from "react-multi-select-component";

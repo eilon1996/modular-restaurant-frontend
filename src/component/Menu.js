@@ -11,7 +11,6 @@ import '../style-css/menu.css';
 const Menu = (props) => {
 
     const {id} = useSelector(store => store.credentials.credentials);
-    const store = useSelector(store => store);
     const {dishes} = useSelector(store => store.dishes);
     const [render, setRender] = useState(0);
     const dispatch = useDispatch()

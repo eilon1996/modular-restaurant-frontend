@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Loading from './Loading';
 import { Fade, Stagger } from 'react-animation-components';
 import EditBox from './EditBox';
 import { useSelector, useDispatch } from 'react-redux';
