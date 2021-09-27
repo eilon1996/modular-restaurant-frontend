@@ -98,6 +98,12 @@ const Menu = (props) => {
         setRender(render + 1);
     }
 
+    
+    function getFullUrl(imageId){
+        console.log("img path: ", process.env.REACT_APP_S3_URL+"users/dishes/"+id+"/"+imageId );
+        return process.env.REACT_APP_S3_URL+"users/dishes/"+id+"/"+imageId;
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -113,7 +119,7 @@ const Menu = (props) => {
                     {dishes.map((dish) => (dish ?
                         <div className="col-6 col-md-4 menu-card">
                             <Link to={`/menu/${dish.id}`} key={dish.id}>
-                                <CardImg width="100%" src={dish.image} alt={dish.title.text} />
+                                <CardImg width="100%" src={getFullUrl(dish.image)} alt={dish.title.text} />
                                 <CardImgOverlay>
                                 <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
                                 </CardImgOverlay>

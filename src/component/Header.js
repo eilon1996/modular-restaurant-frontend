@@ -159,7 +159,7 @@ const Header = (props) => {
                 <div className="container container-nav">
                     <NavbarToggler onClick={() => setIsNavOpen(!isNavOpen)} />
                     <NavbarBrand href="/">
-                        <img src={process.env.REACT_APP_LOGO_URL} height="30" width="41" alt="" />
+                        <img src={process.env.REACT_APP_S3_URL + "default/logo.png"} height="30" width="41" alt="" />
                     </NavbarBrand>
                     <Collapse isOpen={isNavOpen} navbar>
                         <Nav navbar>

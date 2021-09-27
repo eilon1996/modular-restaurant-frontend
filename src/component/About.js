@@ -9,12 +9,20 @@ import UploadS3 from './UploadS3';
 import '../style-css/about.css';
 
 
+
 function About(props) {
+
 
     const {staff} = useSelector(store => store.staff);
     const {id} = useSelector(store => store.credentials.credentials);
     const dispatch = useDispatch()
     const [render, setRender] = useState(0); // change when adding new employee to triger re render 
+
+
+    function getFullUrl(imageId){
+        console.log("img path: ", process.env.REACT_APP_S3_URL+"staff/"+id+"/"+imageId );
+        return process.env.REACT_APP_S3_URL+"users/staff/"+id+"/"+imageId;
+    }
 
     function deleteEmployee(employeeId) {
         let ans = window.confirm(staff[employeeId].title.text + " is going to be deleted");
@@ -158,7 +166,7 @@ function About(props) {
 
                                     <div key={employee.id} className="staff-card">
                                         <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                                        <img src={employee.image} alt={employee.title.text} className="staff-image" />
+                                        <img src={getFullUrl(employee.image)} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">
                                             <EditBox type={"staff"} itemId={employee.id} field={"label"} className="staff-label" />
                                         </div>
