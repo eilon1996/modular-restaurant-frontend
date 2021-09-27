@@ -5,9 +5,10 @@ import Dropzone from 'react-dropzone-uploader'
 import '../style-css/uploadS3.css';
 
 
+// change the pictures name in S3
+// make sure user cant enter problamatic inputs
 
-
-const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
+const UploadS3 = ({ type, userId, itemId, imgUrl, setImgUrl }) => {
 
     const [progress, setprogress] = useState(imgUrl?"showImg":"p0");
 
@@ -29,11 +30,13 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
         if (status === "preparing") setprogress("p1");
         if (status === "done") {
             setprogress("p2");
-            var data = new FormData();
-            const imgName = "users-"+type+"-"+contentId+":"+itemId+"."+file.name;
+            var suffix = file.name.split(".");
+            suffix = suffix[suffix.length-1];
+            const imgName = "users_"+type+"_"+userId+"_"+suffix;
             //const imgName = "users-dishes-test1.png";
 
-            console.log("imgName, file", imgName, file)
+            console.log("imgName", imgName, "file", file);
+            var data = new FormData();
             data.append('image', file, imgName);
 
             var config = {
@@ -42,7 +45,6 @@ const UploadS3 = ({ type, contentId, itemId, imgUrl, setImgUrl }) => {
                 "Access-Control-Allow-Credentials": true,
                 dirName: 'users/dishes', /* optional, not working */
                 crossorigin: true,
-                //url: "http://localhost:5001/upload",
                 url: process.env.REACT_APP_BASE_URL + "upload",
                 data: data
             };
