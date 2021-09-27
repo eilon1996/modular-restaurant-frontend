@@ -63,10 +63,11 @@ const Header = (props) => {
     const { register } = useForm();
 
     useEffect(() => {
-        console.log("color: ", color);
         if (color && casing.color !== color) {
             casing.color = color;
-            dispatch(patchContent(credentials.id, "casing", casing))
+            const path = credentials.id+"/casing";
+            const colorJson = JSON.stringify({"color":casing["color"]});
+            dispatch(patchContent(path ,colorJson, casing, credentials.id,"casing"));
         }
     }, [debounce])
 
@@ -131,10 +132,21 @@ const Header = (props) => {
     function toMultiPage() {
         setFlipText("multi page");
         setFlipClass("multi-page");
-        dispatch(patchContent(page, "page", "multi"));
+        //dispatch(patchContent(page, "page", "multi"));
+
+        
+        const path = credentials.id;
+        const pageJson = JSON.stringify({"page":"multi"});
+        dispatch(patchContent(path ,pageJson, pageJson, credentials.id,"page"));
+
     }
     function toOnePage() {
-        dispatch(patchContent(page, "page", "one"));
+        // dispatch(patchContent(page, "page", "one"));
+        
+        const path = credentials.id;
+        const pageJson = JSON.stringify({"page":"one"});
+        dispatch(patchContent(path ,pageJson, pageJson, credentials.id,"page"));
+
         setFlipText("one page");
         setFlipClass("one-page")
     }

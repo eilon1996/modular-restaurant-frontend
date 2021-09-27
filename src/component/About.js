@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Fade, Stagger } from 'react-animation-components';
 import EditBox from './EditBox';
 import { useSelector, useDispatch } from 'react-redux';
-import { patchContent } from '../redux/ActionCreators';
+import { patchContent, deleteContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import '../style-css/about.css';
 
@@ -16,19 +16,21 @@ function About(props) {
     const dispatch = useDispatch()
     const [render, setRender] = useState(0); // change when adding new employee to triger re render 
 
-    function deleteEmployee(id) {
-        let ans = window.confirm(staff[id].title.text + " is going to be deleted");
+    function deleteEmployee(employeeId) {
+        let ans = window.confirm(staff[employeeId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
 
-        let newStaff = [];
-        for (let i = 0; i < id; i++) {
-            newStaff.push(staff[i])
+        console.log("Object.keys(staff)", Object.keys(staff));
+        const index = Object.keys(staff).indexOf(String(employeeId));
+        
+        console.log("index", index);
+        if (index > -1) {
+            staff.splice(index, 1);
+            console.log("staff", staff);
         }
-        for (let i = id; i < staff.length - 1; i++) {
-            staff[i + 1].id = i;
-            newStaff.push(staff[i + 1])
-        }
-        dispatch(patchContent(id,"staff",newStaff));
+
+        const path = id+"/staff/"+employeeId;
+        dispatch(deleteContent(path ,staff, id,"staff"));
         setRender(render + 1);
     }
 
@@ -52,7 +54,12 @@ function About(props) {
             newEmployee.image = imgUrl;
             staff[amount] = newEmployee;
             setShowForm(false);
-            dispatch(patchContent(id,"staff",staff));
+            // dispatch(patchContent(id,"staff",staff));
+            
+            const path = id+"/staff";
+            const employeeJson = {amount:newEmployee}
+            dispatch(patchContent(path ,employeeJson, staff, id,"staff"));
+            
             setTitle("");
             setLabel("");
             setDescription("");
@@ -67,7 +74,7 @@ function About(props) {
                 <Collapse isOpen={showForm} navbar>
                     <form className="staff-card add-staff" onSubmit={(event) => handleSubmit(event)}>
                         <div className="staff-image" >
-                            <UploadS3 type={"staff"} itemId={Object.keys(staff).length} contentId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                            <UploadS3 type={"staff"} itemId={Object.keys(staff).length} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                         </div>
                         <div className="staff-header">
                             <input className="staff-label" value={label} onChange={(event) => setLabel(event.target.value)} name="label" placeholder="staff member job" />
@@ -146,7 +153,7 @@ function About(props) {
                 <div className="col-12">
                     <Media list>
                         <Stagger in>
-                            {staff.map((employee) => (
+                            {staff.map((employee) => (employee?  // check if employee not null
                                 <Fade in>
 
                                     <div key={employee.id} className="staff-card">
@@ -161,6 +168,8 @@ function About(props) {
                                         </div>
                                     </div>
                                 </Fade>
+                            :
+                            <div></div>
                             ))}
                             <AddEmployee />
                         </Stagger>

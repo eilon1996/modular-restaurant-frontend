@@ -61,7 +61,7 @@ const Menu = (props) => {
                         <CardBody>
                             <form onSubmit={(event) => handleSubmit(event)} className="addDish-form">
                                 <input value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="dish name" />
-                                <UploadS3 type={"dishes"} itemId={Object.keys(dishes).length} contentId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                                <UploadS3 type={"dishes"} itemId={Object.keys(dishes).length} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                                 <CardText>
                                     <span>{(selected && selected.length === 2) ? <span>Hot 🌶 &amp; Vegan 🌱</span> : null}</span>
                                     <MultiSelect
@@ -110,30 +110,19 @@ const Menu = (props) => {
                 </div>
             </div>
                 <div className="row">
-                    {dishes.map((dish) => (
-                        true ?
-                            <div className="col-6 col-md-4 menu-card">
-                                <Link to={`/menu/${dish.id}`} key={dish.id}>
-                                    <CardImg width="100%" src={dish.image} alt={dish.title.text} />
-                                    <CardImgOverlay>
-                                    <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
-                                    </CardImgOverlay>
-                                </Link>     
-                                <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                               
-                            </div>
-                            :
-                            <Card className="col-6 col-md-4 menu-card" key={dish.id}>
-                                <Link to={`/menu/${dish.id}`}>
-                                    <CardImg width="100%" src={dish.image} alt={dish.title.text} />
-                                </Link>
-                                <CardImgOverlay className="menu-overlay">
-                                    <Link href={`/menu/${dish.id}`}> <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span></Link>
+                    {dishes.map((dish) => (dish ?
+                        <div className="col-6 col-md-4 menu-card">
+                            <Link to={`/menu/${dish.id}`} key={dish.id}>
+                                <CardImg width="100%" src={dish.image} alt={dish.title.text} />
+                                <CardImgOverlay>
+                                <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
                                 </CardImgOverlay>
-                                <CardImgOverlay className="menu-overlay-button">
-                                    <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                                </CardImgOverlay>
-                            </Card>
+                            </Link>     
+                            <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                            
+                        </div>
+                        :
+                        <div></div>
                     ))}
                     <AddDish />
                 </div>

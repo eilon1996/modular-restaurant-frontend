@@ -84,7 +84,7 @@ function DishDetail(props) {
             dishes ?
                 dishes[props.id].comments ?
                     <Stagger in>{
-                        dishes[props.id].comments.map((comment) => (
+                        dishes[props.id].comments.map((comment) => (comment?
                             <Fade in>
                                 <li className="list-unstyled" key={comment.id}>
                                     <p>
@@ -95,6 +95,8 @@ function DishDetail(props) {
                                     </p>
                                 </li>
                             </Fade>
+                            :
+                            <div></div>
                         ))
                     }</Stagger>
                     :
@@ -188,8 +190,6 @@ function DishDetail(props) {
         );
 
     }
-
-    console.log("try");
 
     return (
         <div className="container">

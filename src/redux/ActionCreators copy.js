@@ -122,63 +122,25 @@ export const loginToken = () => (dispatch) => {
 
 ///////////patchContent///////////
 
-export const patchContent = (path, content, contentFull, id,type) => (dispatch) => {
+export const patchContent = (id, type, content) => (dispatch) => {
 
-  console.log("JSON.stringify({content, id, type}) ",JSON.stringify({path, content}));
+  console.log("JSON.stringify({content, id, type}) ",JSON.stringify({content, id, type}));
 
   let actionType = ActionTypes.ACTION_TYPES[type]["add"];
-  dispatch(add(contentFull, actionType));
+  dispatch(add(content, actionType));
 
   if (id === "0") return; // user 0 dont need to update the server
 
   return fetch(baseUrl + 'update', {
     method: "POST",
-    body: JSON.stringify({path, content}),
+    body: JSON.stringify({content, id, type}),
     headers: {
       "Content-Type": "application/json"
     },
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response.ok ",JSON.stringify({path, content}));
-      if (response.ok) {
-        return response;
-      } else {
-        var error = new Error('Error ' + response.status + ': ' + response.statusText);
-        error.response = response;
-        throw error;
-      }
-    },
-      error => {
-        throw error;
-      })
-    .catch(error => {
-      console.log('submmit content', error.message);
-    });
-};
-
-
-///////////deleteContent///////////
-
-export const deleteContent = (path, contentFull, id,type) => (dispatch) => {
-
-  console.log("JSON.stringify({content, id, type}) ",JSON.stringify({path}));
-
-  let actionType = ActionTypes.ACTION_TYPES[type]["add"];
-  dispatch(add(contentFull, actionType));
-
-  if (id === "0") return; // user 0 dont need to update the server
-
-  return fetch(baseUrl + 'delete', {
-    method: "POST",
-    body: JSON.stringify({path}),
-    headers: {
-      "Content-Type": "application/json"
-    },
-    credentials: "same-origin"
-  })
-    .then(response => {
-      console.log("response.ok ",JSON.stringify({path}));
+      console.log("response.ok ",JSON.stringify({content, id, type}));
       if (response.ok) {
         return response;
       } else {

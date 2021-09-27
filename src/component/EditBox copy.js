@@ -37,8 +37,8 @@ const EditBox = ({ type, itemId, field }) => {
         if (contentType !== null && fontSize !== undefined && fontSize !== contentType[itemId][field].fontSize) {
             console.log("contenttype: ", contentType);
             contentType[itemId][field].fontSize = fontSize;
-            const path = id+"/"+type + "/" + itemId + "/" + field;
-            dispatch(patchContent(path ,contentType[itemId][field], contentType, id,type));
+
+            dispatch(patchContent(id,type,contentType));
         }
     }, [debouncedFontSize]);
     const [text, setText] = useState(() => {
@@ -56,8 +56,7 @@ const EditBox = ({ type, itemId, field }) => {
         contentType[itemId][field].text = text;
         contentType[itemId][field].fontFamily = fontFamily;
         console.log("handleSubmit, text", contentType);
-        const path = id+"/"+type + "/" + itemId + "/" + field;
-        dispatch(patchContent(path ,contentType[itemId][field], contentType, id,type));
+        dispatch(patchContent(id,type,contentType));
         setEdit(false)
     }
 
