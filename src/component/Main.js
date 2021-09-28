@@ -25,7 +25,6 @@ import { useDispatch, useSelector } from 'react-redux';
 // TODO: view mode
 
 const mapStateToProps = state => {
-  console.log("mapStateToProps", state.content);
   return {
     //myContent: state.myContent
   }
@@ -45,7 +44,6 @@ function Main(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("main useEffect")
     if (page);
     else {
       dispatch(loginToken());
@@ -78,6 +76,7 @@ function Main(props) {
     }
 
     //else
+    
     return (
       <div>
         <Header />

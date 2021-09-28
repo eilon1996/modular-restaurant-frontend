@@ -14,17 +14,14 @@ export const signup = (details) => (dispatch) => {
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response", response);
       return response.json()
     })
     .then(response => {
       if (response.err) {
         throw response.err;
       }
-      console.log("response.token", response.token);
       details.credentials["token"] = response.token;
       // cookie is not being saved. will work with a short string
-      console.log(response.token);
       cookie.save('auth',response["token"], { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(add(details.casing, ActionTypes.ADD_CASING));
       dispatch(add(details.credentials, ActionTypes.ADD_CREDENTIALS));
@@ -55,14 +52,12 @@ export const login = (details) => (dispatch) => {
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response", response);
       return response.json()
     })
     .then(response => {
       if (response.err) {
         throw response.err;
       }
-      console.log("response", response); //user details
       cookie.save('auth',response.user.credentials.token, { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(add(response.user.casing, ActionTypes.ADD_CASING));
       dispatch(add(details, ActionTypes.ADD_CREDENTIALS));  // use the detail from the login (for admin parpace)
@@ -92,14 +87,12 @@ export const loginToken = () => (dispatch) => {
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response", response);
       return response.json()
     })
     .then(response => {
       if (response.err) {
         throw response.err;
       }
-      console.log("response", response); //user details
       return response.user;
     })
     .then(myContent => {
@@ -125,7 +118,6 @@ export const loginToken = () => (dispatch) => {
 
 export const patchContent = (path, content, contentFull, id,type) => (dispatch) => {
 
-  console.log("JSON.stringify({content, id, type}) ",JSON.stringify({path, content}));
 
   let actionType = ActionTypes.ACTION_TYPES[type]["add"];
   dispatch(add(contentFull, actionType));
@@ -141,7 +133,6 @@ export const patchContent = (path, content, contentFull, id,type) => (dispatch) 
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response.ok ",JSON.stringify({path, content}));
       if (response.ok) {
         return response;
       } else {
@@ -154,7 +145,6 @@ export const patchContent = (path, content, contentFull, id,type) => (dispatch) 
         throw error;
       })
     .catch(error => {
-      console.log('submmit content', error.message);
     });
 };
 
@@ -162,8 +152,6 @@ export const patchContent = (path, content, contentFull, id,type) => (dispatch) 
 ///////////deleteContent///////////
 
 export const deleteContent = (path, contentFull, id,type) => (dispatch) => {
-
-  console.log("JSON.stringify({content, id, type}) ",JSON.stringify({path}));
 
   let actionType = ActionTypes.ACTION_TYPES[type]["add"];
   dispatch(add(contentFull, actionType));
@@ -179,7 +167,6 @@ export const deleteContent = (path, contentFull, id,type) => (dispatch) => {
     credentials: "same-origin"
   })
     .then(response => {
-      console.log("response.ok ",JSON.stringify({path}));
       if (response.ok) {
         return response;
       } else {
@@ -192,13 +179,12 @@ export const deleteContent = (path, contentFull, id,type) => (dispatch) => {
         throw error;
       })
     .catch(error => {
-      console.log('submmit content', error.message);
+      console.log('submmit content error', error.message);
     });
 };
 
 
 export const loading = (actionType) => {
-  console.log("ActionCreator-contentLoading");
   return {
     type: actionType
   }
@@ -212,7 +198,6 @@ export const failed = ((actionType, errmess) => {
 });
 
 export const add = (content, actionType) => {
-  console.log("ActionType: ", actionType);
   return ({
     type: actionType,
     payload: content

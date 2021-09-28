@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { patchContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
+import {getFullImgUrl} from "../shared/sharedFunctions";
 
 import '../style-css/menu.css';
 
@@ -24,7 +25,6 @@ const Menu = (props) => {
         const [imgUrl, setImgUrl] = useState();
 
         useEffect(() => {
-            console.log("useEffect, ", imgUrl);
         }, [imgUrl, setImgUrl])
 
         const options = [
@@ -33,23 +33,30 @@ const Menu = (props) => {
         ]
 
         function handleSubmit(event) {
-            const amount = dishes.length;
-            let newDish = JSON.parse(JSON.stringify(dishes[amount - 1]));
+            
+            if(id === "0"){
+                alert("to add a new dish you need to signup first");
+                event.preventDefault()
+            }
+            else{
+                const amount = dishes.length;
+                let newDish = JSON.parse(JSON.stringify(dishes[amount - 1]));
 
-            newDish.title.text = title;
-            newDish.label = selected.map(label => label.label).join();
-            newDish.description.text = description;
-            newDish.id = amount;
-            newDish.comments = null;
-            newDish.image = imgUrl;
-            dishes[amount] = newDish;
-            setShowForm(false);
-            dispatch(patchContent(id,"dishes",dishes));
-            setTitle("");
-            setSelected([]);
-            setDescription("");
-            setRender(render + 1);
-            event.preventDefault()
+                newDish.title.text = title;
+                newDish.label = selected.map(label => label.label).join();
+                newDish.description.text = description;
+                newDish.id = amount;
+                newDish.comments = null;
+                newDish.image = imgUrl;
+                dishes[amount] = newDish;
+                setShowForm(false);
+                dispatch(patchContent(id,"dishes",dishes));
+                setTitle("");
+                setSelected([]);
+                setDescription("");
+                setRender(render + 1);
+                event.preventDefault()
+            }
         }
 
         return (
@@ -71,7 +78,7 @@ const Menu = (props) => {
                                         labelledBy={"Select"}
                                         selectedValues={selected}
                                     />
-                                    <textarea value={description} onChange={(event) => setDescription(event.target.value)} name="description" placeholder="dish description" />
+                                    <textarea value={description} onChange={(event) => setDescription(event.target.value)} name="description" placeholder="dish description"/>
                                 </CardText>
                                 <button className="btn btn-light" type="button" onClick={() => setShowForm(!showForm)}>cancel</button>
                                 <button className="btn btn-primary" type="submit">add</button>
@@ -98,11 +105,6 @@ const Menu = (props) => {
         setRender(render + 1);
     }
 
-    
-    function getFullUrl(imageId){
-        console.log("img path: ", process.env.REACT_APP_S3_URL+"users/dishes/"+id+"/"+imageId );
-        return process.env.REACT_APP_S3_URL+"users/dishes/"+id+"/"+imageId;
-    }
 
     return (
         <div className="container">
@@ -119,7 +121,7 @@ const Menu = (props) => {
                     {dishes.map((dish) => (dish ?
                         <div className="col-6 col-md-4 menu-card">
                             <Link to={`/menu/${dish.id}`} key={dish.id}>
-                                <CardImg width="100%" src={getFullUrl(dish.image)} alt={dish.title.text} />
+                                <CardImg width="100%" src={getFullImgUrl(id, "dishes", dish.image)} alt={dish.title.text} />
                                 <CardImgOverlay>
                                 <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
                                 </CardImgOverlay>

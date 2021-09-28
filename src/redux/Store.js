@@ -9,10 +9,9 @@ import { Staff } from './staff';
 import { Page } from './page';
 
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+//import logger from 'redux-logger';
 
 export const Store = () => {
-    console.log("configStore: Dishes", Dishes)
     const store = createStore(
         combineReducers({
             myContent: MyContent,
@@ -23,7 +22,8 @@ export const Store = () => {
             thePlace: ThePlace,
             dishes: Dishes,
         }),
-        applyMiddleware(thunk, logger)
+        //applyMiddleware(thunk, logger)
+        applyMiddleware(thunk)
     );
 
     return store;

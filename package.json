@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "https://warm-fjord-92793.herokuapp.com/",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -22,6 +24,8 @@
     "mdbreact": "^5.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
     "react-animation-components": "^3.0.0",
     "react-bootstrap": "^1.3.0",
     "react-color-picker-wheel": "^0.1.6",

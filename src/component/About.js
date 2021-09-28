@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { patchContent, deleteContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import '../style-css/about.css';
+import {getFullImgUrl} from "../shared/sharedFunctions";
+import MuiAlert from "@material-ui/lab/Alert";
 
 
 
@@ -18,23 +20,14 @@ function About(props) {
     const dispatch = useDispatch()
     const [render, setRender] = useState(0); // change when adding new employee to triger re render 
 
-
-    function getFullUrl(imageId){
-        console.log("img path: ", process.env.REACT_APP_S3_URL+"staff/"+id+"/"+imageId );
-        return process.env.REACT_APP_S3_URL+"users/staff/"+id+"/"+imageId;
-    }
-
     function deleteEmployee(employeeId) {
         let ans = window.confirm(staff[employeeId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
 
-        console.log("Object.keys(staff)", Object.keys(staff));
         const index = Object.keys(staff).indexOf(String(employeeId));
         
-        console.log("index", index);
         if (index > -1) {
             staff.splice(index, 1);
-            console.log("staff", staff);
         }
 
         const path = id+"/staff/"+employeeId;
@@ -42,6 +35,10 @@ function About(props) {
         setRender(render + 1);
     }
 
+    function Alert(props) {
+        return <MuiAlert elevation={6} 
+                         variant="filled" {...props} />;
+      }
 
     const AddEmployee = () => {
 
@@ -52,28 +49,42 @@ function About(props) {
         const [imgUrl, setImgUrl] = useState();
 
         function handleSubmit(event) {
-            const amount = staff.length;
-            let newEmployee = JSON.parse(JSON.stringify(staff[amount - 1]));
+            
+            if(id === "0"){
+                //alert("to add a new dish you need to signup first");
+                event.preventDefault()
+            }
+            else{
+                const amount = staff.length;
+                let newEmployee = JSON.parse(JSON.stringify(staff[amount - 1]));
 
-            newEmployee.title.text = title;
-            newEmployee.label.text = label;
-            newEmployee.description.text = description;
-            newEmployee.id = amount;
-            newEmployee.image = imgUrl;
-            staff[amount] = newEmployee;
-            setShowForm(false);
-            // dispatch(patchContent(id,"staff",staff));
-            
-            const path = id+"/staff";
-            const employeeJson = {amount:newEmployee}
-            dispatch(patchContent(path ,employeeJson, staff, id,"staff"));
-            
-            setTitle("");
-            setLabel("");
-            setDescription("");
-            setRender(render + 1);
-            event.preventDefault()
+                newEmployee.title.text = title;
+                newEmployee.label.text = label;
+                newEmployee.description.text = description;
+                newEmployee.id = amount;
+                newEmployee.image = imgUrl;
+                staff[amount] = newEmployee;
+                setShowForm(false);
+                // dispatch(patchContent(id,"staff",staff));
+                
+                const path = id+"/staff";
+                const employeeJson = {amount:newEmployee}
+                dispatch(patchContent(path ,employeeJson, staff, id,"staff"));
+                
+                setTitle("");
+                setLabel("");
+                setDescription("");
+                setRender(render + 1);
+                event.preventDefault()
+            }
         }
+
+        /*
+
+            <Alert severity="success">Sample Success Message</Alert>
+            <Alert severity="error">Sample Error Message</Alert>
+            place it floating and disapear after 2 sec 
+        */
 
         return (
             <React.Fragment>
@@ -166,7 +177,7 @@ function About(props) {
 
                                     <div key={employee.id} className="staff-card">
                                         <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                                        <img src={getFullUrl(employee.image)} alt={employee.title.text} className="staff-image" />
+                                        <img src={getFullImgUrl(id, "staff", employee.image)} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">
                                             <EditBox type={"staff"} itemId={employee.id} field={"label"} className="staff-label" />
                                         </div>

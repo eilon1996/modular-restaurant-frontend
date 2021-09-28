@@ -74,12 +74,10 @@ const Header = (props) => {
     function handleLogin(event) {
         event.preventDefault();
         setLoginError("");
-        console.log({ loginUsername, loginPassword });
 
         const details = { id: loginUsername, password: loginPassword }
         dispatch(login(details)).then(res => {
             if (typeof res === "string") {
-                console.log(res);
                 setLoginError(res);
             }
             else {
@@ -94,7 +92,6 @@ const Header = (props) => {
     function handleSignup(event) {
         event.preventDefault();
         setSignupError("");
-        console.log({ signupUsername, signupPassword, signupRePassword });
 
         if (signupRePassword !== signupPassword) {
             setSignupError("passwords not match")
@@ -102,7 +99,23 @@ const Header = (props) => {
         }
         credentials.id = signupUsername;
         credentials.password = signupPassword;
+
         const myContent = {casing, credentials, dishes, thePlace,staff, page}
+
+        
+        for(var type of Object.keys(myContent)){
+            console.log("type", type)
+            if(myContent[type]){
+                for(var item of Object.keys(myContent[type])){
+                    console.log("item", item)
+                    if(myContent[type][item] && myContent[type][item].image){
+                        myContent[type][item].image = "0/"+myContent[type][item].image;
+                    }
+                }      
+            }      
+        }
+        console.log("myContent", myContent)
+
         dispatch(signup(myContent)).then(res => {
             if (res !== "") {
                 setSignupError(res);
@@ -132,23 +145,21 @@ const Header = (props) => {
     function toMultiPage() {
         setFlipText("multi page");
         setFlipClass("multi-page");
-        //dispatch(patchContent(page, "page", "multi"));
 
         
-        const path = credentials.id;
-        const pageJson = JSON.stringify({"page":"multi"});
-        dispatch(patchContent(path ,pageJson, pageJson, credentials.id,"page"));
+        const path = credentials.id + "/page";
+        const pageJson = JSON.stringify({page:"multi"});
+        dispatch(patchContent(path ,"multi", "multi", credentials.id,"page"));
 
     }
     function toOnePage() {
-        // dispatch(patchContent(page, "page", "one"));
         
-        const path = credentials.id;
-        const pageJson = JSON.stringify({"page":"one"});
-        dispatch(patchContent(path ,pageJson, pageJson, credentials.id,"page"));
-
         setFlipText("one page");
         setFlipClass("one-page")
+        const path = credentials.id + "/page";
+        const pageJson = JSON.stringify({"page":"one"});
+        dispatch(patchContent(path ,"one", "one", credentials.id,"page"));
+
     }
 
 
@@ -204,11 +215,11 @@ const Header = (props) => {
                             size={240}
                             initialColor={rgbToHex(color)}
                         />
-                        <div class={"flip-container " + flipClass + "-container"}>
-                            <div class="background-btn" onClick={() => toOnePage()}><strong>one page</strong></div>
-                            <div class="background-btn" onClick={() => toMultiPage()}><strong>multi page</strong></div>
+                        <div className={"flip-container " + flipClass + "-container"}>
+                            <div className="background-btn" onClick={() => toOnePage()}><strong>one page</strong></div>
+                            <div className="background-btn" onClick={() => toMultiPage()}><strong>multi page</strong></div>
                              {/*<button class={"btn btn-dark flip-btn " + flipClass + "-btn"} >{flipText}</button>*/}
-                            <div class={"flip-btn " + flipClass + "-btn"} ><strong>{flipText}</strong></div> 
+                            <div className={"flip-btn " + flipClass + "-btn"} ><strong>{flipText}</strong></div> 
                         </div>
                     </div>
                 </div>

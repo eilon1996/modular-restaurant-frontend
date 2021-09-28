@@ -8,6 +8,7 @@ import EditBox from './EditBox';
 import MultiSelect from "react-multi-select-component";
 import { patchContent } from '../redux/ActionCreators';
 import { useSelector, useDispatch } from 'react-redux';
+import {getFullImgUrl} from "../shared/sharedFunctions";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => val => !(val) || (val.length <= len)
@@ -59,7 +60,7 @@ function DishDetail(props) {
 
             <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
                 <Card>
-                    <CardImg top src={dishes[props.id].image} alt={dishes[props.id].title.text} />
+                    <CardImg top src={getFullImgUrl(id, "dishes", dishes[props.id].image)} alt={dishes[props.id].title.text} />
                     <CardBody>
                         <CardText>
                             {labels}

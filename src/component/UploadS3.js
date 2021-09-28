@@ -27,7 +27,9 @@ const UploadS3 = ({ type, userId, itemId, imgUrl, setImgUrl }) => {
             setprogress("p0");
             setImgUrl(null);
         }
-        if (status === "preparing") setprogress("p1");
+        if (status === "preparing") {
+            setprogress("p1");
+        }
         if (status === "done") {
             setprogress("p2");
             var suffix = file.name.split(".");
@@ -35,64 +37,43 @@ const UploadS3 = ({ type, userId, itemId, imgUrl, setImgUrl }) => {
             const imgName = "users_"+type+"_"+userId+"_"+suffix;
             //const imgName = "users-dishes-test1.png";
 
-            console.log("imgName", imgName, "file", file);
-            var data = new FormData();
-            data.append('image', file, imgName);
+            
+                console.log("imgName", imgName, "file", file);
+                var data = new FormData();
+                data.append('image', file, imgName);
 
-            var config = {
-                method: 'POST',
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,
-                dirName: 'users/dishes', /* optional, not working */
-                crossorigin: true,
-                url: process.env.REACT_APP_BASE_URL + "upload",
-                data: data
-            };
+                var config = {
+                    method: 'POST',
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": true,
+                    dirName: 'users/dishes', /* optional, not working */
+                    crossorigin: true,
+                    url: process.env.REACT_APP_BASE_URL + "upload",
+                    data: data
+                };
 
-            axios(config)
-                .then(function (response) {
-                    console.log(JSON.stringify("axios response", JSON.stringify(response)));
-                    setImgUrl(response.data);
-                    return true;
-                })
-                .then((response) => {setprogress("showImg");})
-                .catch(function (error) {
-                    console.log("error", error);
-                });
-//            setprogress("showImg");
+                axios(config)
+                    .then(function (response) {
+                        console.log(JSON.stringify("axios response", JSON.stringify(response.data)));
+                        setImgUrl(response.data);
+                        return true;
+                    })
+                    .then((response) => {setprogress("showImg");})
+                    .catch(function (error) {
+                        console.log("error", error);
+                    });
+            }
+            setprogress("showImg");
         }
+    
+    function getFullUrl(imageId){
+        return process.env.REACT_APP_S3_URL+"users/"+type+"/"+userId+"/"+imageId;
     }
-
-    /*
-    from github https://github.com/fortana-co/react-dropzone-uploader/blob/master/src/Dropzone.tsx
-    Dropzone accept all those parameters as props
-      multiple,
-      maxFiles,
-      minSizeBytes,
-      maxSizeBytes,
-      onSubmit,
-      getUploadParams,
-      disabled,
-      canCancel,
-      canRemove,
-      canRestart,
-      inpatchContent,
-      inputWithFilesContent,
-      submitButtonDisabled,
-      submitButtonContent,
-      classNames,
-      styles,
-      addClassNames,
-      InputComponent,
-      PreviewComponent,
-      SubmitButtonComponent,
-      LayoutComponent,
-    */
 
 
     return (
         <div className="DropzoneContainer" id={"container"+progress}
-            style={{backgroundImage: `url(${imgUrl})`}}>
+            style={{backgroundImage: `url(${getFullUrl(imgUrl)})`}}>
             < Dropzone
                 //onSubmit={handleSubmit2}
                 //getUploadParams={getUploadParams} // responsible for the progress bar

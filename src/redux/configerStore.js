@@ -14,8 +14,6 @@ import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
 
 export const ConfigureStore = () => {
-    console.log("configStore: Content", Content)
-    console.log("configStore: Dishes", Dishes)
     const store = createStore(
         combineReducers({
             myContent: MyContent,
