@@ -51,12 +51,13 @@ function DishDetail(props) {
         useEffect(() => {
             if (dishes !== null && selected.map(label => label.label).join() !== dishes[props.id]["label"]) {
                 dishes[props.id]["label"] = selected.map(label => label.label).join();
-                dispatch(patchContent(id,"dishes",dishes))
+
+                const path = id+"/dishes/"+props.id+"/label";
+                dispatch(patchContent(path ,dishes[props.id]['label'], dishes, id,"dishes"));
             }
         }, [selected])
 
         return (
-
             <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
                 <Card>
                     <CardImg top src={getFullImgUrl(id, "dishes", dishes[props.id].image)} alt={dishes[props.id].title.text} />
