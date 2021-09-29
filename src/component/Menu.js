@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, Breadcrumb, BreadcrumbItem, Collapse, Ca
 import MultiSelect from "react-multi-select-component";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { patchContent } from '../redux/ActionCreators';
+import { patchContent, deleteContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import {getFullImgUrl} from "../shared/sharedFunctions";
 import { useAlert } from 'react-alert'
@@ -52,7 +52,12 @@ const Menu = (props) => {
                 newDish.image = imgUrl;
                 dishes[amount] = newDish;
                 setShowForm(false);
-                dispatch(patchContent(id,"dishes",dishes));
+                
+                
+                const path = id+"/dishes";
+                const dishesJson = {amount:newDish}
+                dispatch(patchContent(path ,dishesJson, dishes, id,"dishes"));
+
                 setTitle("");
                 setSelected([]);
                 setDescription("");
@@ -92,18 +97,17 @@ const Menu = (props) => {
         )
     }
 
+
     function deleteDish(dishId) {
         let ans = window.confirm(dishes[dishId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
-        let newDishes = [];
-        for (let i = 0; i < dishId; i++) {
-            newDishes.push(dishes[i])
-        }
-        for (let i = dishId; i < dishes.length - 1; i++) {
-            dishes[i + 1].id = i;
-            newDishes.push(dishes[i + 1])
-        }
-        dispatch(patchContent(id,"dishes",newDishes));
+
+        const index = Object.keys(dishes).indexOf(String(dishId));
+        
+        const newDishes =  dishes.slice(0,index).concat(dishes.slice(index+1));
+
+        const path = id+"/dishes/"+dishId;
+        dispatch(deleteContent(path ,newDishes, id,"dishes"));
         setRender(render + 1);
     }
 
@@ -120,15 +124,15 @@ const Menu = (props) => {
                 </div>
             </div>
                 <div className="row">
-                    {dishes.map((dish) => (dish ?
-                        <div className="col-6 col-md-4 menu-card" key={dish.id}>
-                            <Link to={`/menu/${dish.id}`}>
+                    {dishes.map((dish, dishId) => (dish ?
+                        <div className="col-6 col-md-4 menu-card" key={dishId}>
+                            <Link to={`/menu/${dishId}`}>
                                 <CardImg width="100%" src={getFullImgUrl(id, "dishes", dish.image)} alt={dish.title.text} />
                                 <CardImgOverlay>
                                 <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
                                 </CardImgOverlay>
                             </Link>     
-                            <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dish.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                            <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dishId)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                             
                         </div>
                         :

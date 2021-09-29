@@ -25,12 +25,10 @@ function About(props) {
 
         const index = Object.keys(staff).indexOf(String(employeeId));
         
-        if (index > -1) {
-            staff.splice(index, 1);
-        }
+        const newStaff =  staff.slice(0,index).concat(staff.slice(index+1));
 
         const path = id+"/staff/"+employeeId;
-        dispatch(deleteContent(path ,staff, id,"staff"));
+        dispatch(deleteContent(path ,newStaff, id,"staff"));
         setRender(render + 1);
     }
 
@@ -60,7 +58,6 @@ function About(props) {
                 newEmployee.image = imgUrl;
                 staff[amount] = newEmployee;
                 setShowForm(false);
-                // dispatch(patchContent(id,"staff",staff));
                 
                 const path = id+"/staff";
                 const employeeJson = {amount:newEmployee}
@@ -167,18 +164,18 @@ function About(props) {
                 <div className="col-12">
                     <Media list>
                         <Stagger in>
-                            {staff.map((employee) => (employee?  // check if employee not null
-                                <Fade in key={employee.id}>
+                            {staff.map((employee, employeeId) => (employee?  // check if employee not null
+                                <Fade in key={employeeId}>
 
                                     <div className="staff-card">
-                                        <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                                        <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employeeId)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                                         <img src={getFullImgUrl(id, "staff", employee.image)} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">
-                                            <EditBox type={"staff"} itemId={employee.id} field={"label"} className="staff-label" />
+                                            <EditBox type={"staff"} itemId={employeeId} field={"label"} className="staff-label" />
                                         </div>
-                                        <EditBox type={"staff"} itemId={employee.id} field={"title"} className="staff-title" />
+                                        <EditBox type={"staff"} itemId={employeeId} field={"title"} className="staff-title" />
                                         <div className="staff-description">
-                                            <EditBox type={"staff"} itemId={employee.id} field={"description"} />
+                                            <EditBox type={"staff"} itemId={employeeId} field={"description"} />
                                         </div>
                                     </div>
                                 </Fade>
