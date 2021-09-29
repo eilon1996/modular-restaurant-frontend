@@ -48,13 +48,12 @@ function LoadingPage() {
                 <div className="container loading-header" >
 
                     <h1 className="h1-title">Design Your Restaurant</h1>
-                    <span className="loading-title">...</span>
-                    <span className="loading-description">...</span>
+                    <span className="loading-title">Please wait</span>
+                    <span className="loading-description">the contant is being loaded</span>
                     <div className="loading-cycle"> <Loading/> </div>
                 </div>
             </Jumbotron>
-            <div className="container">
-               <p>please wait a moment for the content to be load</p>
+            <div className="loading-empty-container">
                 </div>
 
             <div className="loading-footer" style={{ backgroundColor: "rgba(98,98,98,0.5)" }}>

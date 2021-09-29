@@ -18,12 +18,12 @@
 
 .loading-title {
   grid-area: loading-title;
-  font-size: 90px;
+  font-size: 60px;
 }
 
 .loading-description {
   grid-area: loading-description;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .loading-cycle {
@@ -39,6 +39,9 @@
   color: white !important;
 }
 
+.loading-empty-container{
+  height: 250px;
+}
 
 .loading-header {
   height: 444px;
@@ -46,6 +49,7 @@
 .loading-footer {
   height: 258px;
 }
+
 
 @media screen and (max-width: 768px) {
   .loading-header {
