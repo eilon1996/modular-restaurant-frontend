@@ -30,13 +30,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-
-  /*   console.log("mapDispatchToProps")
-    return {
-      fetchMyContent: (id) => dispatch(fetchMyContent(id)),
-    } */
-};
+const mapDispatchToProps = dispatch => {};
 
 function Main(props) {
 

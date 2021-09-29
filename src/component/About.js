@@ -168,9 +168,9 @@ function About(props) {
                     <Media list>
                         <Stagger in>
                             {staff.map((employee) => (employee?  // check if employee not null
-                                <Fade in>
+                                <Fade in key={employee.id}>
 
-                                    <div key={employee.id} className="staff-card">
+                                    <div className="staff-card">
                                         <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employee.id)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                                         <img src={getFullImgUrl(id, "staff", employee.image)} alt={employee.title.text} className="staff-image" />
                                         <div className="staff-header">

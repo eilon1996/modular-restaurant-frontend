@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardImg, CardText, CardBody } from 'reactstrap';
+import { Card, CardImg, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Button, Modal, ModalBody, ModalHeader, Label, Col, Row } from 'reactstrap'
 import { Control, LocalForm, Errors } from 'react-redux-form';
@@ -61,7 +61,7 @@ function DishDetail(props) {
                 <Card>
                     <CardImg top src={getFullImgUrl(id, "dishes", dishes[props.id].image)} alt={dishes[props.id].title.text} />
                     <CardBody>
-                        <CardText>
+                        <div>
                             {labels}
                             <MultiSelect
                                 options={options}
@@ -71,7 +71,7 @@ function DishDetail(props) {
                                 selectedValues={selected}
                             />
                             <EditBox field="description" type="dishes" itemId={props.id} />
-                        </CardText>
+                        </div>
                     </CardBody>
                 </Card>
             </FadeTransform>
@@ -85,8 +85,8 @@ function DishDetail(props) {
                 dishes[props.id].comments ?
                     <Stagger in>{
                         dishes[props.id].comments.map((comment) => (comment?
-                            <Fade in>
-                                <li className="list-unstyled" key={comment.id}>
+                            <Fade in key={comment.id}>
+                                <li className="list-unstyled">
                                     <p>
                                         {comment.comment} <br />
                                 --{comment.author},
@@ -141,20 +141,20 @@ function DishDetail(props) {
 
                                 <Row className="form-group">
                                     <Col md={{ size: 12 }}>
-                                        <Control.select model=".rating" name="rating"
+                                        <Control.Select model=".rating" name="rating"
                                             value={rating} onChange={(event) => setRating(event.target.value)}>
                                             <option>5</option>
                                             <option>4</option>
                                             <option>3</option>
                                             <option>2</option>
                                             <option>1</option>
-                                        </Control.select>
+                                        </Control.Select>
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
                                     <Label htmlFor="author" md={{ size: 12 }}>Your Name</Label>
                                     <Col md={{ size: 12 }}>
-                                        <Control.text model=".author" id="author" name="author" placeholder="Your Name"
+                                        <Control.Text model=".author" id="author" name="author" placeholder="Your Name"
                                             className="form-control" onChange={(event) => setAuthor(event.target.value)}
                                             validators={{ required, minLength: minLength(3), maxLength: maxLength(15) }}
                                             value={author} />
@@ -171,7 +171,7 @@ function DishDetail(props) {
                                 <Row className="form-group">
                                     <Label htmlFor="comment" md={{ size: 12 }}>Comment</Label>
                                     <Col md={{ size: 12 }}>
-                                        <Control.textarea model=".comment" id="comment" name="comment"
+                                        <Control.Textarea model=".comment" id="comment" name="comment"
                                             rows="6" className="form-control" value={comment}
                                             onChange={(event) => setComment(event.target.value)} />
                                     </Col>

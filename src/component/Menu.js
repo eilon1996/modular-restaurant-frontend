@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardImg, CardImgOverlay, Breadcrumb, BreadcrumbItem, Collapse, CardBody, CardText } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, Breadcrumb, BreadcrumbItem, Collapse, CardBody} from 'reactstrap';
 import MultiSelect from "react-multi-select-component";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -71,7 +71,7 @@ const Menu = (props) => {
                             <form onSubmit={(event) => handleSubmit(event)} className="addDish-form">
                                 <input value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="dish name" />
                                 <UploadS3 type={"dishes"} itemId={Object.keys(dishes).length} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
-                                <CardText>
+                                <div>
                                     <span>{(selected && selected.length === 2) ? <span>Hot 🌶 &amp; Vegan 🌱</span> : null}</span>
                                     <MultiSelect
                                         options={options}
@@ -81,7 +81,7 @@ const Menu = (props) => {
                                         selectedValues={selected}
                                     />
                                     <textarea value={description} onChange={(event) => setDescription(event.target.value)} name="description" placeholder="dish description"/>
-                                </CardText>
+                                </div>
                                 <button className="btn btn-light" type="button" onClick={() => setShowForm(!showForm)}>cancel</button>
                                 <button className="btn btn-primary" type="submit">add</button>
                             </form>
@@ -121,8 +121,8 @@ const Menu = (props) => {
             </div>
                 <div className="row">
                     {dishes.map((dish) => (dish ?
-                        <div className="col-6 col-md-4 menu-card">
-                            <Link to={`/menu/${dish.id}`} key={dish.id}>
+                        <div className="col-6 col-md-4 menu-card" key={dish.id}>
+                            <Link to={`/menu/${dish.id}`}>
                                 <CardImg width="100%" src={getFullImgUrl(id, "dishes", dish.image)} alt={dish.title.text} />
                                 <CardImgOverlay>
                                 <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>

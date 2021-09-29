@@ -36,7 +36,7 @@ function Footer(props) {
 
         return (
                 edit ?
-                    <form className="footer-social-form" id={edit} onSubmit={(event) => handleSubmit(event)}>
+                    <form className="footer-social-form" onSubmit={(event) => handleSubmit(event)}>
                         <span className="footer-social-title">add here external links to your restaurant</span>
                         <label className="footer-btn-facebook btn btn-social-icon btn-facebook"><i className="fa fa-facebook" /></label>
                         <input className="facebook-input" name="facebook" placeholder="facebook link" value={facebook} onChange={(event) => setFacebook(event.target.value)} />
@@ -59,7 +59,7 @@ function Footer(props) {
 
                     <div className="col-12 col-sm-4 mt-4 mt-sm-0 social-links-div">
                         <h2>our social</h2>
-                        <div className="social-links" id={edit}>
+                        <div className="social-links">
                             <a style={{display:facebook && facebook.length>0?"":"none" }} className="btn btn-social-icon btn-facebook" href={facebook}><i className="fa fa-facebook"></i></a>
                             <a style={{display:instagram && instagram.length>0?"":"none" }} className="btn btn-social-icon btn-instagram" href={instagram}><i className="fa fa-instagram"></i></a>
                             <a style={{display:twitter && twitter.length>0?"":"none" }}  className="btn btn-social-icon btn-twitter" href={twitter}><i className="fa fa-twitter"></i></a>
