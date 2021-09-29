@@ -8,7 +8,6 @@ export const Staff = (state = {
     switch (action.type) {
             case ActionTypes.ADD_STAFF:
 
-                //alert("action creator, leader: "+ JSON.stringify(action.payload))
                 return {...state, isLoading:false, errMess:null, staff: action.payload}
             
             case ActionTypes.STAFF_LOADING:

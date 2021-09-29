@@ -1,11 +1,10 @@
 
 
 export const getFullImgUrl = (userId, type, imageId) => {
-    console.log("imageId", imageId, !imageId)
     if(!imageId){
         return null;
     }
-    if(imageId.indexOf("0/") != -1){
+    if(imageId.indexOf("0/") !== -1){
         return process.env.REACT_APP_S3_URL+"users/"+type+"/"+imageId;
     }
     return process.env.REACT_APP_S3_URL+"users/"+type+"/"+userId+"/"+imageId;

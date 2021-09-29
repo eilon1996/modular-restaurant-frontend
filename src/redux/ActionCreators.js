@@ -29,7 +29,6 @@ export const signup = (details) => (dispatch) => {
       dispatch(add(details.staff, ActionTypes.ADD_STAFF));
       dispatch(add(details.thePlace, ActionTypes.ADD_THEPLACE));
       dispatch(add(details.page, ActionTypes.ADD_PAGE));
-      alert("you signed up successfully");
       return "";
     })
     .catch(error => {
@@ -65,8 +64,7 @@ export const login = (details) => (dispatch) => {
       dispatch(add(response.user.staff, ActionTypes.ADD_STAFF));
       dispatch(add(response.user.thePlace, ActionTypes.ADD_THEPLACE));
       dispatch(add(response.user.page, ActionTypes.ADD_PAGE));
-      alert("you logged in successfully");
-      return {user: response.user};
+      return "";
     })
     .catch(error => {
       console.log('login error: ', error);

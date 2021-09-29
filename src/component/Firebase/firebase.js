@@ -14,7 +14,6 @@ const config = {
  
 class Firebase {
     constructor() {
-      console.log("test env: ",process.env.REACT_APP_API_KEY);
       app.initializeApp(config);
     }
   }

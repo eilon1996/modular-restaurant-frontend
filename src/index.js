@@ -8,10 +8,27 @@ import App from './App';
 //in the course code the origin file name is registerServiceWorker
 import registerServiceWorker from './serviceWorker';
 
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.TOP_CENTER,
+  timeout: 4000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.FADE,
+  containerStyle: {
+    outerWidth: "80%",
+    innerWidth: "80%"
+  }
+}
 
 ReactDOM.render(
-    <App />,  document.getElementById('root')
+  <AlertProvider template={AlertTemplate} {...options}>
+    <App />
+  </AlertProvider>
+  ,  document.getElementById('root')
 );
 registerServiceWorker();
 

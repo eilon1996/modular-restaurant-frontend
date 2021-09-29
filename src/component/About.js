@@ -8,9 +8,7 @@ import { patchContent, deleteContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import '../style-css/about.css';
 import {getFullImgUrl} from "../shared/sharedFunctions";
-import MuiAlert from "@material-ui/lab/Alert";
-
-
+import { useAlert } from 'react-alert'
 
 function About(props) {
 
@@ -19,6 +17,7 @@ function About(props) {
     const {id} = useSelector(store => store.credentials.credentials);
     const dispatch = useDispatch()
     const [render, setRender] = useState(0); // change when adding new employee to triger re render 
+    const alert = useAlert()
 
     function deleteEmployee(employeeId) {
         let ans = window.confirm(staff[employeeId].title.text + " is going to be deleted");
@@ -35,10 +34,6 @@ function About(props) {
         setRender(render + 1);
     }
 
-    function Alert(props) {
-        return <MuiAlert elevation={6} 
-                         variant="filled" {...props} />;
-      }
 
     const AddEmployee = () => {
 
@@ -51,7 +46,7 @@ function About(props) {
         function handleSubmit(event) {
             
             if(id === "0"){
-                //alert("to add a new dish you need to signup first");
+                alert.show("you have to signup first")
                 event.preventDefault()
             }
             else{

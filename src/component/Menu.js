@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { patchContent } from '../redux/ActionCreators';
 import UploadS3 from './UploadS3';
 import {getFullImgUrl} from "../shared/sharedFunctions";
+import { useAlert } from 'react-alert'
 
 import '../style-css/menu.css';
 
@@ -23,6 +24,7 @@ const Menu = (props) => {
         const [selected, setSelected] = useState([]);
         const [description, setDescription] = useState();
         const [imgUrl, setImgUrl] = useState();
+        const alert = useAlert()
 
         useEffect(() => {
         }, [imgUrl, setImgUrl])
@@ -35,7 +37,7 @@ const Menu = (props) => {
         function handleSubmit(event) {
             
             if(id === "0"){
-                alert("to add a new dish you need to signup first");
+                alert.show("you have to signup first")
                 event.preventDefault()
             }
             else{

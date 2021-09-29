@@ -12,12 +12,13 @@ import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux';
 import { patchContent, signup, login } from '../redux/ActionCreators'
 import ColorPicker from 'react-color-picker-wheel';
+import { useAlert } from 'react-alert'
 
 import '../style-css/header.css';
 
 const Header = (props) => {
 
-     const [ {casing}, {credentials}, {dishes}, {thePlace}, {staff}, {page} ]= useSelector(store =>[ store.casing, store.credentials, store.dishes, store.thePlace, store.staff, store.page])
+    const [ {casing}, {credentials}, {dishes}, {thePlace}, {staff}, {page} ]= useSelector(store =>[ store.casing, store.credentials, store.dishes, store.thePlace, store.staff, store.page])
 
     const dispatch = useDispatch();
 
@@ -32,8 +33,9 @@ const Header = (props) => {
     const [signupPassword, setSignupPassword] = useState("");
     const [signupRePassword, setSignupRePassword] = useState("");
 
+    const alert = useAlert();
 
-     const [flipText, setFlipText] = useState(() => {
+    const [flipText, setFlipText] = useState(() => {
         if (page) {
             if (page === "one") return "one page";
             return "multi page"
@@ -77,10 +79,12 @@ const Header = (props) => {
 
         const details = { id: loginUsername, password: loginPassword }
         dispatch(login(details)).then(res => {
-            if (typeof res === "string") {
+            console.log("login res", res)
+            if (res !== "") {
                 setLoginError(res);
             }
             else {
+                alert.show("welcome " + loginUsername, {type: 'success'});
                 setIsModalOpen(false);
                 setLoginUsername("");
                 setLoginPassword("");
@@ -104,17 +108,14 @@ const Header = (props) => {
 
         
         for(var type of Object.keys(myContent)){
-            console.log("type", type)
             if(myContent[type]){
                 for(var item of Object.keys(myContent[type])){
-                    console.log("item", item)
                     if(myContent[type][item] && myContent[type][item].image){
                         myContent[type][item].image = "0/"+myContent[type][item].image;
                     }
                 }      
             }      
         }
-        console.log("myContent", myContent)
 
         dispatch(signup(myContent)).then(res => {
             if (res !== "") {
@@ -123,6 +124,7 @@ const Header = (props) => {
                 credentials.password = "0";
             }
             else {
+                alert.show("welcome " + credentials.id, {type: 'success'});
                 setIsModalOpen(false);
                 setSignupUsername("");
                 setSignupPassword("");

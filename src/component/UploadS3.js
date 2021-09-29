@@ -20,10 +20,8 @@ const UploadS3 = ({ type, userId, itemId, imgUrl, setImgUrl }) => {
     
     // called every time a file's `status` changes
     const handleChangeStatus = ({ meta, file }, status) => {
-        console.log("uploader", status, meta, file) // turn in to progress bar
         //use the rejected files
         if (status === "removed"){
-            console.log("removed");
             setprogress("p0");
             setImgUrl(null);
         }

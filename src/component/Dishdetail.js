@@ -50,7 +50,6 @@ function DishDetail(props) {
 
         useEffect(() => {
             if (dishes !== null && selected.map(label => label.label).join() !== dishes[props.id]["label"]) {
-                console.log("selected", selected)
                 dishes[props.id]["label"] = selected.map(label => label.label).join();
                 dispatch(patchContent(id,"dishes",dishes))
             }

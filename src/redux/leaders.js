@@ -8,7 +8,6 @@ export const Leaders = (state = {
     switch (action.type) {
             case ActionTypes.ADD_LEADERS:
 
-                //alert("action creator, leader: "+ JSON.stringify(action.payload))
                 return {...state, isLoading:false, errMess:null, leaders: action.payload}
             
             case ActionTypes.LEADERS_LOADING:
