@@ -145,22 +145,21 @@ const Header = (props) => {
     }
 
     function toMultiPage() {
+        console.log("multi")
         setFlipText("multi page");
         setFlipClass("multi-page");
 
         
-        const path = credentials.id + "/page";
-        const pageJson = JSON.stringify({page:"multi"});
-        dispatch(patchContent(path ,"multi", "multi", credentials.id,"page"));
+        const path = credentials.id;
+        dispatch(patchContent(path, {"page":"multi"} ,"multi", credentials.id,"page"));
 
     }
     function toOnePage() {
         
         setFlipText("one page");
         setFlipClass("one-page")
-        const path = credentials.id + "/page";
-        const pageJson = JSON.stringify({"page":"one"});
-        dispatch(patchContent(path ,"one", "one", credentials.id,"page"));
+        const path = credentials.id;
+        dispatch(patchContent(path ,{"page":"one"}, "one", credentials.id,"page"));
 
     }
 
@@ -191,13 +190,6 @@ const Header = (props) => {
                                     <span className="fa fa-list"> Menu</span>
                                 </NavLink>
                             </NavItem>
-                            {/* 
-                                <NavItem>
-                                    <NavLink className="nav-link offset-2 offset-md-0" to="/contactus">
-                                        <span className="fa fa-address-card"></span> Contact US
-                                </NavLink>
-                                 
-                                </NavItem>*/}
                         </Nav>
 
                     </Collapse>

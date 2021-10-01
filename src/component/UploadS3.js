@@ -8,7 +8,7 @@ import '../style-css/uploadS3.css';
 // change the pictures name in S3
 // make sure user cant enter problamatic inputs
 
-const UploadS3 = ({ type, userId, itemId, imgUrl, setImgUrl }) => {
+const UploadS3 = ({ type, userId, imgUrl, setImgUrl }) => {
 
     const [progress, setprogress] = useState(imgUrl?"showImg":"p0");
 

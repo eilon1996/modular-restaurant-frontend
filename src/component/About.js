@@ -23,9 +23,11 @@ function About(props) {
         let ans = window.confirm(staff[employeeId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
 
-        const index = Object.keys(staff).indexOf(String(employeeId));
-        
-        const newStaff =  staff.slice(0,index).concat(staff.slice(index+1));
+        var newStaff = {}
+        for(var key of Object.keys(staff)){
+            if(key !== employeeId)
+                newStaff[key] = staff[key];
+        }
 
         const path = id+"/staff/"+employeeId;
         dispatch(deleteContent(path ,newStaff, id,"staff"));
@@ -48,20 +50,21 @@ function About(props) {
                 event.preventDefault()
             }
             else{
-                const amount = staff.length;
-                let newEmployee = JSON.parse(JSON.stringify(staff[amount - 1]));
+                let newEmployee = JSON.parse(JSON.stringify(Object.values(staff)[0]));
 
                 newEmployee.title.text = title;
                 newEmployee.label.text = label;
                 newEmployee.description.text = description;
-                newEmployee.id = amount;
                 newEmployee.image = imgUrl;
-                staff[amount] = newEmployee;
+                
+                var d = new Date();
+                var employeeId = "ID"+d.getTime();
+
+                staff[employeeId] = newEmployee;
                 setShowForm(false);
                 
-                const path = id+"/staff";
-                const employeeJson = {amount:newEmployee}
-                dispatch(patchContent(path ,employeeJson, staff, id,"staff"));
+                const path = id+"/staff/"+employeeId;
+                dispatch(patchContent(path ,newEmployee, staff, id,"staff"));
                 
                 setTitle("");
                 setLabel("");
@@ -85,7 +88,7 @@ function About(props) {
                 <Collapse isOpen={showForm} navbar>
                     <form className="staff-card add-staff" onSubmit={(event) => handleSubmit(event)}>
                         <div className="staff-image" >
-                            <UploadS3 type={"staff"} itemId={Object.keys(staff).length} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                            <UploadS3 type={"staff"} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                         </div>
                         <div className="staff-header">
                             <input className="staff-label" value={label} onChange={(event) => setLabel(event.target.value)} name="label" placeholder="staff member job" />
@@ -164,18 +167,18 @@ function About(props) {
                 <div className="col-12">
                     <Media list>
                         <Stagger in>
-                            {staff.map((employee, employeeId) => (employee?  // check if employee not null
-                                <Fade in key={employeeId}>
+                            {Object.keys(staff).map((key) => (staff[key]?  // check if employee not null
+                                <Fade in key={key}>
 
                                     <div className="staff-card">
-                                        <button className="staff-x btn btn-default" onClick={() => deleteEmployee(employeeId)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
-                                        <img src={getFullImgUrl(id, "staff", employee.image)} alt={employee.title.text} className="staff-image" />
+                                        <button className="staff-x btn btn-default" onClick={() => deleteEmployee(key)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                                        <img src={getFullImgUrl(id, "staff", staff[key].image)} alt={staff[key].title.text} className="staff-image" />
                                         <div className="staff-header">
-                                            <EditBox type={"staff"} itemId={employeeId} field={"label"} className="staff-label" />
+                                            <EditBox type={"staff"} itemId={key} field={"label"} className="staff-label" />
                                         </div>
-                                        <EditBox type={"staff"} itemId={employeeId} field={"title"} className="staff-title" />
+                                        <EditBox type={"staff"} itemId={key} field={"title"} className="staff-title" />
                                         <div className="staff-description">
-                                            <EditBox type={"staff"} itemId={employeeId} field={"description"} />
+                                            <EditBox type={"staff"} itemId={key} field={"description"} />
                                         </div>
                                     </div>
                                 </Fade>

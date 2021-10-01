@@ -55,8 +55,12 @@ export const login = (details) => (dispatch) => {
     })
     .then(response => {
       if (response.err) {
+        console.log('login error1: ', response.err);
         throw response.err;
       }
+
+      console.log("credentials", response.user.credentials, "details", details)
+
       cookie.save('auth',response.user.credentials.token, { path: '/', maxAge: 3600 * 24 * 30 });
       dispatch(add(response.user.casing, ActionTypes.ADD_CASING));
       dispatch(add(details, ActionTypes.ADD_CREDENTIALS));  // use the detail from the login (for admin parpace)

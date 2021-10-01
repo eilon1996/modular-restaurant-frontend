@@ -15,6 +15,7 @@ const EditBox = ({ type, itemId, field }) => {
 
     const [fontFamily, setFontFamily] = useState(() => {
         if (contentType)
+            //console.log("contentType: ", contentType, "item id:", itemId)
             return (contentType[itemId][field].fontFamily);
 
         return null;

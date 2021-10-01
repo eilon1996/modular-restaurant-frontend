@@ -26,7 +26,7 @@ function DishDetail(props) {
     const [render, setRender] = useState(0);
 
 
-
+    console.log("dishes:", dishes, "props.id", props.id)
     const Dish = () => {
 
         const [selected, setSelected] = useState(() => {
@@ -49,8 +49,8 @@ function DishDetail(props) {
         ]
 
         useEffect(() => {
-            if (dishes !== null && selected.map(label => label.label).join() !== dishes[props.id]["label"]) {
-                dishes[props.id]["label"] = selected.map(label => label.label).join();
+            if (dishes !== null && selected.map(label => label.label).join(",") !== dishes[props.id]["label"]) {
+                dishes[props.id]["label"] = selected.map(label => label.label).join(",");
 
                 const path = id+"/dishes/"+props.id+"/label";
                 dispatch(patchContent(path ,dishes[props.id]['label'], dishes, id,"dishes"));

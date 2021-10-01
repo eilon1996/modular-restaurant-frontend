@@ -41,22 +41,22 @@ const Menu = (props) => {
                 event.preventDefault()
             }
             else{
-                const amount = dishes.length;
-                let newDish = JSON.parse(JSON.stringify(dishes[amount - 1]));
+                let newDish = JSON.parse(JSON.stringify(Object.values(dishes)[0]));
 
                 newDish.title.text = title;
-                newDish.label = selected.map(label => label.label).join();
+                newDish.label = selected.map(label => label.label).join(",");
                 newDish.description.text = description;
-                newDish.id = amount;
+                var d = new Date();
+                var dishId = "ID"+d.getTime();
+                
                 newDish.comments = null;
                 newDish.image = imgUrl;
-                dishes[amount] = newDish;
+                dishes[dishId] = newDish;
                 setShowForm(false);
                 
                 
-                const path = id+"/dishes";
-                const dishesJson = {amount:newDish}
-                dispatch(patchContent(path ,dishesJson, dishes, id,"dishes"));
+                const path = id+"/dishes/"+dishId;
+                dispatch(patchContent(path ,newDish, dishes, id,"dishes"));
 
                 setTitle("");
                 setSelected([]);
@@ -75,7 +75,7 @@ const Menu = (props) => {
                         <CardBody>
                             <form onSubmit={(event) => handleSubmit(event)} className="addDish-form">
                                 <input value={title} onChange={(event) => setTitle(event.target.value)} name="title" placeholder="dish name" />
-                                <UploadS3 type={"dishes"} itemId={Object.keys(dishes).length} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
+                                <UploadS3 type={"dishes"} userId={id} imgUrl={imgUrl} setImgUrl={setImgUrl} />
                                 <div>
                                     <span>{(selected && selected.length === 2) ? <span>Hot 🌶 &amp; Vegan 🌱</span> : null}</span>
                                     <MultiSelect
@@ -99,12 +99,15 @@ const Menu = (props) => {
 
 
     function deleteDish(dishId) {
+
         let ans = window.confirm(dishes[dishId].title.text + " is going to be deleted");
         if (ans === false) return; // do nothing
 
-        const index = Object.keys(dishes).indexOf(String(dishId));
-        
-        const newDishes =  dishes.slice(0,index).concat(dishes.slice(index+1));
+        var newDishes = {}
+        for(var key of Object.keys(dishes)){
+            if(key !== dishId)
+            newDishes[key] = dishes[key];
+        }
 
         const path = id+"/dishes/"+dishId;
         dispatch(deleteContent(path ,newDishes, id,"dishes"));
@@ -124,15 +127,15 @@ const Menu = (props) => {
                 </div>
             </div>
                 <div className="row">
-                    {dishes.map((dish, dishId) => (dish ?
-                        <div className="col-6 col-md-4 menu-card" key={dishId}>
-                            <Link to={`/menu/${dishId}`}>
-                                <CardImg width="100%" src={getFullImgUrl(id, "dishes", dish.image)} alt={dish.title.text} />
+                    {Object.keys(dishes).map((key) => (dishes[key]?  // check if dishe not null
+                        <div className="col-6 col-md-4 menu-card" key={key}>
+                            <Link to={`/menu/${key}`}>
+                                <CardImg width="100%" src={getFullImgUrl(id, "dishes", dishes[key].image)} alt={dishes[key].title.text} />
                                 <CardImgOverlay>
-                                <span style={{ color: "black", fontFamily: dish.title.fontFamily, fontSize: dish.title.fontSize }}>{dish.title.text}</span>
+                                <span style={{ color: "black", fontFamily: dishes[key].title.fontFamily, fontSize: dishes[key].title.fontSize }}>{dishes[key].title.text}</span>
                                 </CardImgOverlay>
                             </Link>     
-                            <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(dishId)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
+                            <button className=" menu-delete-button btn btn-default" onClick={() => deleteDish(key)} style={{ marginLeft: "auto" }}><span className="fa fa-times"></span></button>
                             
                         </div>
                         :

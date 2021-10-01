@@ -46,25 +46,20 @@ function Main(props) {
 
   if (page) {
     if (page === "one") {
-      //   if (casing.page = "one") {
-      const OnePage = () => {
-        return (
-          <React.Fragment>
-            <Header />
-            <Menu />
-            <About />
-            {/* <DishDetail id={parseInt(match.params.id, 10)} /> */}
-            <Footer />
-          </React.Fragment>
-        )
-      };
       return (
         <div className="onePage">
-          <Switch location={props.location}>
-            <Route exact path='/home' component={() => <OnePage />} />
-            <Route path='/menu/:id' component={({ match }) => <DishDetail id={parseInt(match.params.id, 10)} />} />
-            <Redirect to="/home" />
-          </Switch>
+          <Header />
+            <Switch location={props.location}>
+              <Route exact path='/home' component={() => 
+                  <React.Fragment>
+                    <Menu />
+                    <About />
+                  </React.Fragment>} />
+              <Route path='/menu/:id' component={({ match }) => 
+                  <DishDetail id={match.params.id} />} />
+              <Redirect to="/home" />
+            </Switch>
+          <Footer />
         </div>
       );
     }
@@ -80,10 +75,7 @@ function Main(props) {
               <Route path='/home' component={() => <Home />} />
               <Route exact path='/aboutus' component={() => <About />} />
               <Route exact path='/menu' component={() => <Menu />} />
-              <Route path='/menu/:id' component={({ match }) => <DishDetail id={parseInt(match.params.id, 10)} />} />
-              {/* <Route exact path='/contactus' component={() =>
-                   <Contact resetFeedbackForm={props.resetFeedbackForm}
-                     postFeedback={props.postFeedback} />} />  */}
+              <Route path='/menu/:id' component={({ match }) => <DishDetail id={match.params.id} />} />
               <Redirect to="/home" />
             </Switch>
           </CSSTransition>
