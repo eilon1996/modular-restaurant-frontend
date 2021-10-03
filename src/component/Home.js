@@ -48,7 +48,9 @@ function Home(props) {
                     <RenderCard item={Object.values(dishes)[0]} type={"dishes"} url={"menu"}/>
                 </div>
                 <div className="col-12 col-md-4 p-3">
-                    <RenderCard item={Object.values(thePlace)[0]} type={"thePlace"} />
+                    <RenderCard item={Object.values(thePlace)[0]} type={"thePlace"} 
+                    
+                    />
                 </div>
                 <div className="delete-on-phone col-md-4 p-3">
                     <RenderCard item={Object.values(staff)[0]} type={"staff"} url={"aboutus"} />

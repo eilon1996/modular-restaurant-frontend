@@ -1,0 +1,172 @@
+
+.staff-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "image header"
+    "image title"
+    "image description";
+  margin: 30px 0px;
+}
+
+.staff-image {
+  grid-area: image;
+  align-self: start;
+  margin: 0px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.staff-header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto 20px;
+  grid-template-areas: "label x";
+  margin: 0px;
+  padding: 0px;
+}
+
+.staff-label {
+  grid-area: label;
+}
+.staff-x {
+  display: grid;
+  position: absolute;
+  top: auto;
+  justify-self: end;
+  background-color: white;
+  opacity: 0.5;
+}
+
+.staff-title {
+  grid-area: title;
+}
+
+.staff-description {
+  grid-area: description;
+}
+
+
+.add-staff {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 50px 50px auto;
+  grid-template-areas:
+    "image header"
+    "image title"
+    "image description"
+    ". buttons";
+  margin: 30px 0px;
+}
+
+.add-staff *{
+  align-self: start;
+}
+
+.add-staff .staff-header .staff-label, .staff-title{
+  width: 300px;
+}
+
+.buttons{
+  grid-area: buttons;
+  justify-self: end;
+}
+.buttons *{
+  margin: 10px 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .staff-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns:50%  50%;
+    grid-column-gap: 20px;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "image header"
+      "image title"
+      "description description"
+      ". buttons"
+      ;
+    margin: 40px 0px;
+  }
+
+  .staff-image {
+    grid-area: image;
+    width:100%;
+  }
+
+
+  .staff-description {
+    grid-area: description;
+    margin: 0px;
+    padding: 0px;
+    width: 90%;
+  }
+
+  .add-staff .staff-description{
+    width: 100%;
+  }
+
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .staff-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns:100%;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "image"
+      "header"
+      "title"
+      "buttons"
+      ;
+    margin: 40px 0px;
+  }
+
+
+.staff-image {
+  width: 100%;
+}
+
+  /* 
+.staff-header {
+  display: grid;
+  justify-self: center;
+}
+
+.staff-label {
+  grid-area: label;
+}
+.staff-x {
+  display: grid;
+  position: absolute;
+  top: auto;
+  justify-self: end;
+}
+
+.staff-title {
+  grid-area: title;
+} */
+
+
+
+  .staff-description {
+    display: none;
+  }
+
+
+.staff-x {
+  display: grid;
+  position: absolute;
+  top: auto;
+  justify-self: start;
+  padding: 5px;
+}
+
+}

@@ -9,6 +9,7 @@ import MultiSelect from "react-multi-select-component";
 import { patchContent } from '../redux/ActionCreators';
 import { useSelector, useDispatch } from 'react-redux';
 import {getFullImgUrl} from "../shared/sharedFunctions";
+import '../style-css/dishDetail.css';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => val => !(val) || (val.length <= len)
@@ -85,21 +86,21 @@ function DishDetail(props) {
             dishes ?
                 dishes[props.id].comments ?
                     <Stagger in>{
-                        dishes[props.id].comments.map((comment) => (comment?
-                            <Fade in key={comment.id}>
+                        Object.keys(dishes[props.id].comments).map((key) => (dishes[props.id].comments[key]?
+                            <Fade in key={key}>
                                 <li className="list-unstyled">
                                     <p>
-                                        {comment.comment} <br />
-                                --{comment.author},
+                                        {dishes[props.id].comments[key].comment} <br />
+                                --{dishes[props.id].comments[key].author},
                                 {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' })
-                                            .format(new Date(Date.parse(comment.date)))}
+                                            .format(new Date(Date.parse(dishes[props.id].comments[key].date)))}
                                     </p>
                                 </li>
                             </Fade>
                             :
                             <div></div>
                         ))
-                    }</Stagger>
+                        }</Stagger>
                     :
                     <Stagger in><li><p>be the first to comment!</p></li></Stagger>
                 :
@@ -123,7 +124,13 @@ function DishDetail(props) {
             const amount = dishes[props.id]["comments"].length;
             let newComment = { "author": values.author, "comment": values.comment, "date": new Date().toISOString(), "id": amount, "rating": values.rating }
             dishes[props.id].comments[amount] = newComment;
-            dispatch(patchContent(id,"dishes",dishes));
+
+            var d = new Date();
+            var commentId = "ID"+d.getTime();
+            
+            const path = id+"/dishes/"+props.id+"/comments/"+commentId;
+            dispatch(patchContent(path ,newComment, dishes, id,"dishes"));
+
             setRender(render + 1);
         }
 
@@ -140,22 +147,10 @@ function DishDetail(props) {
 
                             <LocalForm onSubmit={(values) => handleSubmit(values)}>
 
-                                <Row className="form-group">
-                                    <Col md={{ size: 12 }}>
-                                        <Control.Select model=".rating" name="rating"
-                                            value={rating} onChange={(event) => setRating(event.target.value)}>
-                                            <option>5</option>
-                                            <option>4</option>
-                                            <option>3</option>
-                                            <option>2</option>
-                                            <option>1</option>
-                                        </Control.Select>
-                                    </Col>
-                                </Row>
-                                <Row className="form-group">
+                            <Row className="form-group">
                                     <Label htmlFor="author" md={{ size: 12 }}>Your Name</Label>
                                     <Col md={{ size: 12 }}>
-                                        <Control.Text model=".author" id="author" name="author" placeholder="Your Name"
+                                        <Control.text model=".author" id="author" name="author" placeholder="Your Name"
                                             className="form-control" onChange={(event) => setAuthor(event.target.value)}
                                             validators={{ required, minLength: minLength(3), maxLength: maxLength(15) }}
                                             value={author} />
@@ -170,9 +165,23 @@ function DishDetail(props) {
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
+                                    <Col md={{ size: 12 }}>
+                                        <span>rate the meal    </span>
+                                        <Control.select model=".rating" name="rating" className="select"
+                                            value={rating} onChange={(event) => setRating(event.target.value)}
+                                            >
+                                            <option>  5  </option>
+                                            <option>  4  </option>
+                                            <option>  3  </option>
+                                            <option>  2  </option>
+                                            <option>  1  </option>
+                                        </Control.select>
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
                                     <Label htmlFor="comment" md={{ size: 12 }}>Comment</Label>
                                     <Col md={{ size: 12 }}>
-                                        <Control.Textarea model=".comment" id="comment" name="comment"
+                                        <Control.textarea model=".comment" id="comment" name="comment"
                                             rows="6" className="form-control" value={comment}
                                             onChange={(event) => setComment(event.target.value)} />
                                     </Col>
@@ -181,7 +190,7 @@ function DishDetail(props) {
                                     <Col md={{ size: 12 }}>
                                         <Button type="submit" color="primary">
                                             Submit
-                            </Button>
+                                        </Button>
                                     </Col>
                                 </Row>
                             </LocalForm>

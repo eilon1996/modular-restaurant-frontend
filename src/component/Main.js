@@ -25,9 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // TODO: view mode
 
 const mapStateToProps = state => {
-  return {
-    //myContent: state.myContent
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {};
